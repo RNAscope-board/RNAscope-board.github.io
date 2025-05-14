@@ -10,7 +10,7 @@
 
 
 
-  <link rel="icon" href="./images/pb_logo.png">
+  <link rel="icon" href="./images/logo.png">
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
@@ -232,6 +232,40 @@ leading to insufficient and biased assessments that hinder their practical appli
     }
 
     #performance-table1 tbody tr:hover a {
+      color:inherit !important;
+    }
+
+    #performance-table2 th {
+    font-family: 'Arial', monospace;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #dff1ff;  /* background color */
+    }
+
+    #performance-table2 td {
+    font-family: 'Georgia', serif;
+    font-size: 12px;
+    }
+
+    #performance-table2 tbody tr:nth-child(odd) td {
+      background:#f9f9f9 !important;
+    }
+
+    #performance-table2 tbody tr:nth-child(even) td {
+      background:#ffffff !important;
+    }
+
+    #performance-table2 tbody tr:hover {
+      background:#004db6 !important;
+    }
+
+    #performance-table2 tbody tr:hover td,
+    #performance-table2 tbody tr:hover th {
+      color:#004db6 !important;
+      font-weight:bold;
+    }
+
+    #performance-table2 tbody tr:hover a {
       color:inherit !important;
     }
 
@@ -584,26 +618,119 @@ leading to insufficient and biased assessments that hinder their practical appli
             <thead>
               <tr>
                 <th rowspan="2">Model (Module)</th>
-                <th colspan="1" class="has-text-centered" class="is-size-12">bpRNA</th>
-                <th colspan="1" class="has-text-centered" class="is-size-12">Set A</th>
+                <th colspan="1" class="has-text-centered" class="is-size-12">TestS</th>
+                <th colspan="1" class="has-text-centered" class="is-size-12">TestL</th>
               </tr>
               <tr>
-                <!-- bpRNA -->
-                 <th>Precision<sub>Intra-Family</sub></th>
-                <th>Precision<sub>Intra-Family</sub></th>
-                <th>Precision<sub>Inter-Family</sub></th>
+                 <th>MAE ↓</th>
+                 <th>MAE ↓</th>
               </tr>
             </thead>
 
             <tbody>
-              <tr><td><strong>One-hot</strong></td>
-                <!-- bpRNA -->
-                <td>0.465 ± 0.008</td>
-                <td>0.399 ± 0.002</td>
-              </tr>
+              <tr><td><strong>One-hot</strong></td> <td>0.179 ± 0.001</td> <td>0.167 ± 0.002</td></tr>
+              <tr><td><strong>Dense</strong></td><td>0.176 ± 0.001</td><td>0.174 ± 0.002</td></tr>
+
+              <tr><td><strong>RNABERT (MLP)</strong></td><td>0.255 ± 0.000</td><td>0.266 ± 0.001</td></tr>
+              <tr><td><strong>RNA-FM (MLP)</strong></td><td>0.214 ± 0.001</td><td>0.187 ± 0.003</td></tr>
+              <tr><td><strong>3UTRBERT (MLP)</strong></td><td>0.202 ± 0.001</td><td>0.195 ± 0.002</td></tr>
+              <tr><td><strong>SpliceBERT (MLP)</strong></td><td>0.207 ± 0.001</td><td>0.207 ± 0.001</td></tr>
+              <tr><td><strong>UTR-LM (MLP)</strong></td><td>0.201 ± 0.001</td><td>0.196 ± 0.003</td></tr>
+              <tr><td><strong>RiNALMo (MLP)</strong></td><td>0.183 ± 0.001</td><td>0.195 ± 0.002</td></tr>
+
+              <tr><td><strong>RNABERT (CNN)</strong></td><td>0.228 ± 0.001</td><td>0.241 ± 0.002</td></tr>
+              <tr><td><strong>RNA-FM (CNN)</strong></td><td>0.197 ± 0.003</td><td>0.176 ± 0.001</td></tr>
+              <tr><td><strong>3UTRBERT (CNN)</strong></td><td>0.192 ± 0.000</td><td>0.182 ± 0.002</td></tr>
+              <tr><td><strong>SpliceBERT (CNN)</strong></td><td>0.196 ± 0.001</td><td>0.179 ± 0.002</td></tr>
+              <tr><td><strong>UTR-LM (CNN)</strong></td><td>0.191 ± 0.001</td><td>0.176 ± 0.007</td></tr>
+              <tr><td><strong>RiNALMo (CNN)</strong></td><td>0.173 ± 0.001</td><td>0.179 ± 0.002</td></tr>
+
+              <tr><td><strong>RNABERT (ResNet)</strong></td><td>0.181 ± 0.002</td><td>0.175 ± 0.003</td></tr>
+              <tr><td><strong>RNA-FM (ResNet)</strong></td><td>0.196 ± 0.004</td><td>0.166 ± 0.004</td></tr>
+              <tr><td><strong>3UTRBERT (ResNet)</strong></td><td>0.187 ± 0.002</td><td>0.172 ± 0.004</td></tr>
+              <tr><td><strong>SpliceBERT (ResNet)</strong></td><td>0.193 ± 0.004</td><td>0.177 ± 0.003</td></tr>
+              <tr><td><strong>UTR-LM (ResNet)</strong></td><td>0.180 ± 0.001</td><td>0.171 ± 0.005</td></tr>
+              <tr><td><strong>RiNALMo (ResNet)</strong></td><td><strong>0.163 ± 0.000</strong></td><td><strong>0.163 ± 0.004</strong></td></tr>
+
+
              </tbody>
           </table>
         </div>
+
+
+        <!-- ======================================================= -->
+        <!-- 3. Contact Map Prediction                   -->
+        <!-- ======================================================= -->
+        <h3 class="subtitle is-4">(3) Contact Map Prediction </h3>
+          <div class="content has-text-justified">
+            <p class="cmp-desc" style="text-align:left;">
+              <strong>Contact Map Prediction&nbsp;(CMP)</strong> is framed as a
+              binary-classification task in which the model predicts, for every nucleotide
+              pair \((x_i, x_j)\), whether the two residues are within&nbsp;8&nbsp;Å in
+              three-dimensional space, i.e.&nbsp;their contact state
+              \(y_{ij} \in \{0,1\}\).
+              Owing to the intrinsic flexibility of RNA, accurately recovering these
+              long-range spatial relationships remains highly challenging.
+            </p>
+          </div>
+
+          <div class="table-container">
+            <table class="table is-striped is-bordered is-hoverable is-fullwidth tablesorter" id="performance-table2">
+              <thead>
+<!--                <tr>-->
+<!--                  <th rowspan="2">Model (Module)</th>-->
+<!--                  <th colspan="1" class="has-text-centered" class="is-size-12"> </th>-->
+<!--                  <th colspan="1" class="has-text-centered" class="is-size-12"> </th>-->
+<!--                </tr>-->
+                <tr>
+                    <th>Model (Module)</th>
+                   <th>Short@L/5</th>
+                   <th>Long@L/5</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr><td><strong>One-hot</strong></td> <td>0.158 ± 0.006</td> <td>0.168 ± 0.007</td></tr>
+                <tr><td><strong>Dense</strong></td><td>0.190 ± 0.015</td><td>0.170 ± 0.006</td></tr>
+
+                <tr><td><strong>RNABERT (MLP)</strong></td><td>0.013 ± 0.001</td><td>0.021 ± 0.003</td></tr>
+                <tr><td><strong>RNA-FM (MLP)</strong></td><td>0.137 ± 0.003</td><td>0.129 ± 0.002</td></tr>
+                <tr><td><strong>3UTRBERT (MLP)</strong></td><td>0.103 ± 0.002</td><td>0.086 ± 0.003</td></tr>
+                <tr><td><strong>SpliceBERT (MLP)</strong></td><td>0.111 ± 0.002</td><td>0.121 ± 0.002</td></tr>
+                <tr><td><strong>UTR-LM (MLP)</strong></td><td>0.111 ± 0.001</td><td>0.196 ± 0.003</td></tr>
+                <tr><td><strong>RiNALMo (MLP)</strong></td><td>0.183 ± 0.001</td><td>0.195 ± 0.002</td></tr>
+
+                <tr><td><strong>RNABERT (CNN)</strong></td><td>0.228 ± 0.001</td><td>0.241 ± 0.002</td></tr>
+                <tr><td><strong>RNA-FM (CNN)</strong></td><td>0.197 ± 0.003</td><td>0.176 ± 0.001</td></tr>
+                <tr><td><strong>3UTRBERT (CNN)</strong></td><td>0.192 ± 0.000</td><td>0.182 ± 0.002</td></tr>
+                <tr><td><strong>SpliceBERT (CNN)</strong></td><td>0.196 ± 0.001</td><td>0.179 ± 0.002</td></tr>
+                <tr><td><strong>UTR-LM (CNN)</strong></td><td>0.191 ± 0.001</td><td>0.176 ± 0.007</td></tr>
+                <tr><td><strong>RiNALMo (CNN)</strong></td><td>0.173 ± 0.001</td><td>0.179 ± 0.002</td></tr>
+
+                <tr><td><strong>RNABERT (ResNet)</strong></td><td>0.181 ± 0.002</td><td>0.175 ± 0.003</td></tr>
+                <tr><td><strong>RNA-FM (ResNet)</strong></td><td>0.196 ± 0.004</td><td>0.166 ± 0.004</td></tr>
+                <tr><td><strong>3UTRBERT (ResNet)</strong></td><td>0.187 ± 0.002</td><td>0.172 ± 0.004</td></tr>
+                <tr><td><strong>SpliceBERT (ResNet)</strong></td><td>0.193 ± 0.004</td><td>0.177 ± 0.003</td></tr>
+                <tr><td><strong>UTR-LM (ResNet)</strong></td><td>0.180 ± 0.001</td><td>0.171 ± 0.005</td></tr>
+                <tr><td><strong>RiNALMo (ResNet)</strong></td><td><strong>0.163 ± 0.000</strong></td><td><strong>0.163 ± 0.004</strong></td></tr>
+
+
+               </tbody>
+            </table>
+          </div>
+
+
+        <h2 class="title is-3" id="RNA-Interaction-tasks">RNA Interaction Tasks Performance</h2>
+
+        <div class="content has-text-justified">
+          <p class="mt-3">
+            RNA sequences determine structures. This panel outlines tasks for inferring RNA structure from one-dimensional (1D) sequence, including <strong>secondary structure prediction</strong> for base-pairing likelihood, <strong>chemical reactivity prediction</strong> for structural dynamics and nucleotide accessibility, and <strong>contact map prediction</strong> for spatial interactions essential to three-dimensional topology. Together, these tasks establish a sub-framework for understanding the structural diversity of RNA across families.
+            Results are reported as the <em>mean ± standard deviation</em> across three independent runs using different random seeds.
+          </p>
+        </div>
+
+
+
 
 
       </div>
@@ -617,7 +744,8 @@ leading to insufficient and biased assessments that hinder their practical appli
   $(document).ready(function() {
     // Initialize the tablesorter plugin
     $("#performance-table").tablesorter();
-     $("#performance-table1").tablesorter();
+    $("#performance-table1").tablesorter();
+    $("#performance-table2").tablesorter();
   });
 </script>
 
