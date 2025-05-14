@@ -968,7 +968,7 @@ leading to insufficient and biased assessments that hinder their practical appli
             <thead>
               <tr>
                 <th rowspan="2">Model (Module)</th>
-                <th colspan="1" class="has-text-centered" class="is-size-12"><i> Average of 22 RBPs datasets</i></th>
+                <th rowspan="2" class="has-text-centered" class="is-size-12"><i> Average of 22 RBPs datasets</i></th>
                 <th colspan="1" class="has-text-centered" class="is-size-12">AKAP1_HepG2</th>
                 <th colspan="1" class="has-text-centered" class="is-size-12">BCLAF1_HepG2</th>
                 <th colspan="1" class="has-text-centered" class="is-size-12">DDX24_K562</th>
@@ -993,7 +993,6 @@ leading to insufficient and biased assessments that hinder their practical appli
                 <th colspan="1" class="has-text-centered" class="is-size-12">YBX3_K562</th>
               </tr>
               <tr>
-                 <th><i>F1</i></th>
                  <th>F1</th>
                  <th>F1</th>
                 <th>F1</th>
@@ -1415,49 +1414,225 @@ leading to insufficient and biased assessments that hinder their practical appli
           <table class="table is-striped is-bordered is-hoverable is-fullwidth tablesorter" id="performance-table6">
             <thead>
               <tr>
-                <th rowspan="2">Model (Module)</th>
-                <th colspan="1" class="has-text-centered" class="is-size-12">GFP</th>
-                <th colspan="1" class="has-text-centered" class="is-size-12">NELF</th>
+                <th rowspan="3">Model (Module)</th>
+                <th colspan="6" class="has-text-centered" class="is-size-12">Splicing Site</th>
+                <th colspan="3" class="has-text-centered" class="is-size-12">Splicing Event</th>
+                <th colspan="3" class="has-text-centered" class="is-size-12">PAS</th>
               </tr>
               <tr>
-                 <th>Spearman p</th>
-                 <th>Spearman p</th>
+                 <th>Donor_human</th>
+                 <th>Donor_ara</th>
+                <th>Donor_rice</th>
+                <th>Acceptor_human</th>
+                <th>Acceptor_ara</th>
+                <th>Acceptor_rice</th>
+
+                <th>human</th>
+                <th>ara</th>
+                <th>rice</th>
+
+                <th>human</th>
+                <th>mouse_bl</th>
+                <th>mouse_sp</th>
+              </tr>
+              <tr>
+                 <th>Accuracy</th>
+                 <th>Accuracy</th>
+                <th>Accuracy</th>
+                 <th>Accuracy</th>
+                <th>Accuracy</th>
+                 <th>Accuracy</th>
+
+                <th>F1</th>
+                 <th>F1</th>
+                <th>F1</th>
+
+                 <th>Accuracy</th>
+                <th>Accuracy</th>
+                 <th>Accuracy</th>
               </tr>
             </thead>
 
             <tbody>
-              <tr><td><strong>One-hot</strong></td> <td>0.215 ± 0.008</td> <td>0.668 ± 0.130</td></tr>
-              <tr><td><strong>Dense</strong></td><td>0.138 ± 0.041</td><td>0.388 ± 0.059</td></tr>
+              <tr><td><strong>One-hot</strong></td>
+                <td>0.903 ± 0.001</td> <td>0.893 ± 0.012</td><td>0.754 ± 0.018</td>
+                 <td>0.900 ± 0.002</td> <td>0.746 ± 0.013</td><td>0.735 ± 0.017</td>
+                 <td>0.585 ± 0.004</td> <td>0.310 ± 0.027</td><td>0.350 ± 0.032</td>
+                 <td>0.752 ± 0.003</td> <td>0.633 ± 0.010</td><td>0.638 ± 0.012</td>
+              </tr>
+              <tr><td><strong>Dense</strong></td>
+              <td>0.895 ± 0.002</td> <td>0.762 ± 0.008</td><td>0.738 ± 0.006</td>
+                 <td>0.895 ± 0.001</td> <td>0.738 ± 0.010</td><td>0.720 ± 0.015</td>
+                 <td>0.589 ± 0.016</td> <td>0.330 ± 0.033</td><td>0.380 ± 0.025</td>
+                 <td>0.744 ± 0.001</td> <td>0.629 ± 0.012</td><td>0.633 ± 0.014</td>
+              </tr>
 
-              <tr><td><strong>DNABERT2 (MLP)</strong></td><td>-0.124 ± 0.044</td><td>0.148 ± 0.010</td></tr>
-              <tr><td><strong>HyenaDNA (MLP)</strong></td><td>0.092 ± 0.063</td><td>0.140 ± 0.005</td></tr>
-              <tr><td><strong>NT (MLP)</strong></td><td>0.139 ± 0.050</td><td>0.314 ± 0.004</td></tr>
-              <tr><td><strong>RNABERT (MLP)</strong></td><td>-0.049 ± 0.036</td><td>0.129 ± 0.005</td></tr>
-              <tr><td><strong>RNA-FM (MLP)</strong></td><td>0.073 ± 0.006</td><td>0.331 ± 0.009</td></tr>
-              <tr><td><strong>3UTRBERT (MLP)</strong></td><td>-0.043 ± 0.005</td><td>0.331 ± 0.009</td></tr>
-              <tr><td><strong>SpliceBERT (MLP)</strong></td><td>0.079 ± 0.010</td><td>0.298 ± 0.003</td></tr>
-              <tr><td><strong>UTR-LM (MLP)</strong></td><td>0.028 ± 0.087</td><td>0.134 ± 0.072</td></tr>
-              <tr><td><strong>RiNALMo (MLP)</strong></td><td>0.076 ± 0.070</td><td>0.157 ± 0.018</td></tr>
+              <tr><td><strong>DNABERT2 (MLP)</strong></td>
+              <td>0.808 ± 0.001</td> <td>0.662 ± 0.013</td><td>0.624 ± 0.008</td>
+                 <td>0.799 ± 0.001</td> <td>0.682 ± 0.022</td><td>0.671 ± 0.027</td>
+                 <td>0.582 ± 0.006</td> <td>0.288 ± 0.014</td><td>0.364 ± 0.012</td>
+                 <td>0.744 ± 0.002</td> <td>0.617 ± 0.002</td><td>0.628 ± 0.002</td>
+              </tr>
+              <tr><td><strong>HyenaDNA (MLP)</strong></td>
+              <td>0.780 ± 0.001</td> <td>0.665 ± 0.004</td><td>0.631 ± 0.004</td>
+                 <td>0.797 ± 0.002</td> <td>0.692 ± 0.007</td><td>0.652 ± 0.010</td>
+                 <td>0.533 ± 0.003</td> <td>0.291 ± 0.016</td><td>0.378 ± 0.014</td>
+                 <td>0.738 ± 0.003</td> <td>0.641 ± 0.007</td><td>0.647 ± 0.006</td>
+              </tr>
+              <tr><td><strong>NT (MLP)</strong></td>
+              <td>0.776 ± 0.001</td> <td>0.667 ± 0.007</td><td>0.597 ± 0.006</td>
+                 <td>0.775 ± 0.004</td> <td>0.655 ± 0.001</td><td>0.607 ± 0.014</td>
+                 <td>0.535 ± 0.003</td> <td>0.296 ± 0.020</td><td>0.367 ± 0.011</td>
+                 <td>0.738 ± 0.001</td> <td>0.628 ± 0.006</td><td>0.637 ± 0.005</td>
+              </tr>
+              <tr><td><strong>RNABERT (MLP)</strong></td>
+              <td>0.675 ± 0.003</td> <td>0.600 ± 0.003</td><td>0.587 ± 0.003</td>
+                 <td>0.664 ± 0.001</td> <td>0.612 ± 0.015</td><td>0.573 ± 0.010</td>
+                 <td>0.410 ± 0.011</td> <td>0.215 ± 0.014</td><td>0.301 ± 0.008</td>
+                 <td>0.702 ± 0.002</td> <td>0.624 ± 0.002</td><td>0.633 ± 0.002</td>
+              </tr>
+              <tr><td><strong>RNA-FM (MLP)</strong></td>
+              <td>0.803 ± 0.000</td> <td>0.694 ± 0.011</td><td>0.669 ± 0.009</td>
+                 <td>0.807 ± 0.003</td> <td>0.708 ± 0.013</td><td>0.680 ± 0.007</td>
+                 <td>0.592 ± 0.004</td> <td>0.344 ± 0.003</td><td>0.402 ± 0.007</td>
+                 <td>0.458 ± 0.001</td> <td>0.643 ± 0.009</td><td>0.655 ± 0.008</td>
+              </tr>
+              <tr><td><strong>3UTRBERT (MLP)</strong></td>
+              <td>0.814 ± 0.006</td> <td>0.707 ± 0.002</td><td>0.669 ± 0.005</td>
+                 <td>0.814 ± 0.004</td> <td>0.730 ± 0.002</td><td>0.725 ± 0.002</td>
+                 <td>0.599 ± 0.003</td> <td>0.348 ± 0.015</td><td>0.384 ± 0.021</td>
+                 <td>0.765 ± 0.004</td> <td>0.654 ± 0.008</td><td>0.664 ± 0.009</td>
+              </tr>
+              <tr><td><strong>SpliceBERT (MLP)</strong></td>
+              <td>0.886 ± 0.001</td> <td>0.802 ± 0.011</td><td>0.765 ± 0.017</td>
+                 <td>0.887 ± 0.001</td> <td>0.843 ± 0.004</td><td>0.833 ± 0.005</td>
+                 <td>0.646 ± 0.009</td> <td>0.367 ± 0.006</td><td>0.410 ± 0.017</td>
+                 <td>0.763 ± 0.003</td> <td>0.606 ± 0.008</td><td>0.618 ± 0.008</td>
+              </tr>
+              <tr><td><strong>UTR-LM (MLP)</strong></td>
+              <td>0.768 ± 0.000</td> <td>0.632 ± 0.007</td><td>0.603 ± 0.006</td>
+                 <td>0.766 ± 0.001</td> <td>0.625 ± 0.009</td><td>0.601 ± 0.006</td>
+                 <td>0.526 ± 0.011</td> <td>0.263 ± 0.030</td><td>0.308 ± 0.028</td>
+                 <td>0.738 ± 0.001</td> <td>0.642 ± 0.003</td><td>0.648 ± 0.003</td>
+              </tr>
+              <tr><td><strong>RiNALMo (MLP)</strong></td>
+              <td>0.868 ± 0.002</td> <td>0.780 ± 0.001</td><td>0.734 ± 0.003</td>
+                 <td>0.858 ± 0.001</td> <td>0.779 ± 0.002</td><td>0.776 ± 0.002</td>
+                 <td>0.640 ± 0.002</td> <td>0.353 ± 0.006</td><td>0.400 ± 0.010</td>
+                 <td>0.760 ± 0.002</td> <td>0.635 ± 0.016</td><td>0.649 ± 0.019</td>
+              </tr>
 
-               <tr><td><strong>DNABERT2 (CNN)</strong></td><td>-0.030 ± 0.002</td><td>0.241 ± 0.021</td></tr>
-              <tr><td><strong>HyenaDNA (CNN)</strong></td><td>0.139 ± 0.011</td><td>0.181 ± 0.009</td></tr>
-              <tr><td><strong>NT (CNN)</strong></td><td>0.138 ± 0.017</td><td>0.259 ± 0.007</td></tr>
-              <tr><td><strong>RNABERT (CNN)</strong></td><td>-0.016 ± 0.003</td><td>0.135 ± 0.003</td></tr>
-              <tr><td><strong>RNA-FM (CNN)</strong></td><td>0.224 ± 0.073</td><td>0.384 ± 0.002</td></tr>
-              <tr><td><strong>3UTRBERT (CNN)</strong></td><td>0.207 ± 0.184</td><td>0.194 ± 0.008</td></tr>
-              <tr><td><strong>SpliceBERT (CNN)</strong></td><td>0.107 ± 0.011</td><td>0.340 ± 0.007</td></tr>
-              <tr><td><strong>UTR-LM (CNN)</strong></td><td>0.037 ± 0.041</td><td>0.244 ± 0.069</td></tr>
-              <tr><td><strong>RiNALMo (CNN)</strong></td><td>0.067 ± 0.061</td><td>0.161 ± 0.011</td></tr>
 
-               <tr><td><strong>DNABERT2 (ResNet)</strong></td><td>0.267 ± 0.014</td><td>0.580 ± 0.029</td></tr>
-              <tr><td><strong>HyenaDNA (ResNet)</strong></td><td>0.376 ± 0.032</td><td>0.625 ± 0.143</td></tr>
-              <tr><td><strong>NT (ResNet)</strong></td><td>0.334 ± 0.009</td><td>0.626 ± 0.015</td></tr>
-              <tr><td><strong>RNABERT (ResNet)</strong></td><td>0.029 ± 0.165</td><td><strong>0.677 ± 0.052</strong></td></tr>
-              <tr><td><strong>RNA-FM (ResNet)</strong></td><td><strong>0.407 ± 0.046</strong></td><td>0.646 ± 0.059</td></tr>
-              <tr><td><strong>3UTRBERT (ResNet)</strong></td><td>0.262 ± 0.165</td><td>0.498 ± 0.213</td></tr>
-              <tr><td><strong>SpliceBERT (ResNet)</strong></td><td>0.162 ± 0.071</td><td>0.510 ± 0.040</td></tr>
-              <tr><td><strong>UTR-LM (ResNet)</strong></td><td>0.233 ± 0.098</td><td>0.671 ± 0.050</td></tr>
-              <tr><td><strong>RiNALMo (ResNet)</strong></td><td>0.109 ± 0.093</td><td>0.256 ± 0.096</td></tr>
+               <tr><td><strong>DNABERT2 (CNN)</strong></td>
+              <td>0.861 ± 0.004</td> <td>0.726 ± 0.009</td><td>0.710 ± 0.015</td>
+                 <td>0.851 ± 0.004</td> <td>0.725 ± 0.017</td><td>0.748 ± 0.003</td>
+                 <td>0.619 ± 0.003</td> <td>0.306 ± 0.025</td><td>0.359 ± 0.020</td>
+                  <td>0.753 ± 0.007</td> <td>0.610 ± 0.009</td><td>0.618 ± 0.009</td>
+              </tr>
+              <tr><td><strong>HyenaDNA (CNN)</strong></td>
+              <td>0.954 ± 0.001</td> <td>0.893 ± 0.004</td><td>0.890 ± 0.007</td>
+                 <td>0.946 ± 0.001</td> <td>0.854 ± 0.009</td><td>0.855 ± 0.005</td>
+                 <td>0.663 ± 0.010</td> <td>0.417 ± 0.020</td><td>0.464 ± 0.020</td>
+                 <td>0.760 ± 0.010</td> <td>0.678 ± 0.015</td><td>0.682 ± 0.014</td>
+              </tr>
+              <tr><td><strong>NT (CNN)</strong></td>
+              <td>0.925 ± 0.005</td> <td>0.837 ± 0.009</td><td>0.819 ± 0.014</td>
+                 <td>0.902 ± 0.001</td> <td>0.796 ± 0.009</td><td>0.777 ± 0.033</td>
+                 <td>0.570 ± 0.011</td> <td>0.346 ± 0.011</td><td>0.384 ± 0.006</td>
+                 <td>0.471 ± 0.002</td> <td>0.632 ± 0.007</td><td>0.640 ± 0.006</td>
+              </tr>
+              <tr><td><strong>RNABERT (CNN)</strong></td>
+              <td>0.631 ± 0.001</td> <td>0.844 ± 0.006</td><td>0.821 ± 0.011</td>
+                 <td>0.904 ± 0.003</td> <td>0.799 ± 0.009</td><td>0.778 ± 0.003</td>
+                 <td>0.511 ± 0.011</td> <td>0.295 ± 0.012</td><td>0.345 ± 0.021</td>
+                 <td>0.727 ± 0.002</td> <td>0.640 ± 0.003</td><td>0.645 ± 0.002</td>
+              </tr>
+              <tr><td><strong>RNA-FM (CNN)</strong></td>
+              <td>0.958 ± 0.001</td> <td>0.891 ± 0.002</td><td>0.891 ± 0.003</td>
+                 <td>0.945 ± 0.001</td> <td>0.845 ± 0.002</td><td>0.848 ± 0.004</td>
+                 <td>0.717 ± 0.046</td> <td>0.448 ± 0.017</td><td>0.499 ± 0.018</td>
+                 <td>0.773 ± 0.001</td> <td>0.672 ± 0.015</td><td>0.681 ± 0.013</td>
+              </tr>
+              <tr><td><strong>3UTRBERT (CNN)</strong></td>
+              <td>0.957 ± 0.001</td> <td>0.889 ± 0.002</td><td>0.883 ± 0.010</td>
+                 <td>0.947 ± 0.002</td> <td>0.841 ± 0.004</td><td>0.846 ± 0.009</td>
+                 <td>0.713 ± 0.004</td> <td>0.440 ± 0.017</td><td>0.469 ± 0.011</td>
+                 <td>0.779 ± 0.002</td> <td>0.639 ± 0.011</td><td>0.648 ± 0.012</td>
+              </tr>
+              <tr><td><strong>SpliceBERT (CNN)</strong></td>
+              <td>0.957 ± 0.000</td> <td>0.906 ± 0.007</td><td>0.894 ± 0.018</td>
+                 <td>0.941 ± 0.001</td> <td>0.890 ± 0.009</td><td>0.892 ± 0.011</td>
+                 <td>0.760 ± 0.004</td> <td>0.495 ± 0.014</td><td>0.535 ± 0.014</td>
+                 <td>0.778 ± 0.005</td> <td>0.630 ± 0.014</td><td>0.638 ± 0.012</td>
+              </tr>
+              <tr><td><strong>UTR-LM (CNN)</strong></td>
+              <td>0.925 ± 0.001</td> <td>0.797 ± 0.002</td><td>0.800 ± 0.007</td>
+                 <td>0.921 ± 0.001</td> <td>0.801 ± 0.003</td><td>0.798 ± 0.008</td>
+                 <td>0.657 ± 0.010</td> <td>0.414 ± 0.013</td><td>0.447 ± 0.012</td>
+                 <td>0.766 ± 0.006</td> <td>0.659 ± 0.012</td><td>0.663 ± 0.013</td>
+              </tr>
+              <tr><td><strong>RiNALMo (CNN)</strong></td>
+              <td>0.903 ± 0.002</td> <td>0.855 ± 0.001</td><td>0.831 ± 0.003</td>
+                 <td>0.895 ± 0.002</td> <td>0.859 ± 0.001</td><td>0.850 ± 0.002</td>
+                 <td>0.691 ± 0.002</td> <td>0.383 ± 0.005</td><td>0.450 ± 0.007</td>
+                 <td>0.770 ± 0.004</td> <td>0.634 ± 0.003</td><td>0.647 ± 0.003</td>
+              </tr>
+
+
+               <tr><td><strong>DNABERT2 (ResNet)</strong></td>
+              <td>0.937 ± 0.000</td> <td>0.866 ± 0.008</td><td>0.858 ± 0.010</td>
+                 <td>0.927 ± 0.003</td> <td>0.853 ± 0.004</td><td>0.854 ± 0.006</td>
+                 <td>0.697 ± 0.003</td> <td>0.366 ± 0.011</td><td>0.421 ± 0.011</td>
+                  <td>0.740 ± 0.007</td> <td>0.616 ± 0.007</td><td>0.625 ± 0.010</td>
+              </tr>
+              <tr><td><strong>HyenaDNA (ResNet)</strong></td>
+              <td>0.964 ± 0.000</td> <td>0.903 ± 0.009</td><td>0.900 ± 0.010</td>
+                 <td>0.954 ± 0.001</td> <td>0.848 ± 0.013</td><td>0.853 ± 0.014</td>
+                 <td>0.621 ± 0.002</td> <td>0.389 ± 0.041</td><td>0.437 ± 0.013</td>
+                 <td><strong>0.781 ± 0.001</strong></td> <td><strong>0.693 ± 0.007</strong></td><td><strong>0.697 ± 0.007</strong></td>
+              </tr>
+              <tr><td><strong>NT (ResNet)</strong></td>
+              <td>0.954 ± 0.001</td> <td>0.893 ± 0.012</td><td>0.896 ± 0.009</td>
+                 <td>0.937 ± 0.002</td> <td>0.859 ± 0.002</td><td>0.864 ± 0.002</td>
+                 <td><strong>0.797 ± 0.005</strong></td> <td><strong>0.526 ± 0.012</strong></td><td><strong>0.566 ± 0.012</strong></td>
+                 <td>0.741 ± 0.015</td> <td>0.648 ± 0.008</td><td>0.655 ± 0.007</td>
+              </tr>
+              <tr><td><strong>RNABERT (ResNet)</strong></td>
+              <td>0.965 ± 0.001</td> <td>0.908 ± 0.005</td><td>0.901 ± 0.006</td>
+                 <td>0.852 ± 0.001</td> <td>0.856 ± 0.011</td><td>0.843 ± 0.009</td>
+                 <td>0.725 ± 0.001</td> <td>0.493 ± 0.026</td><td>0.538 ± 0.026</td>
+                 <td>0.738 ± 0.005</td> <td>0.636 ± 0.007</td><td>0.641 ± 0.006</td>
+              </tr>
+              <tr><td><strong>RNA-FM (ResNet)</strong></td>
+              <td><strong>0.967 ± 0.000</strong></td> <td>0.913 ± 0.004</td><td>0.917 ± 0.005</td>
+                 <td><strong>0.955 ± 0.001</strong></td> <td>0.859 ± 0.003</td><td>0.869 ± 0.004</td>
+                 <td>0.768 ± 0.005</td> <td>0.511 ± 0.026</td><td>0.550 ± 0.033</td>
+                 <td>0.776 ± 0.002</td> <td>0.671 ± 0.013</td><td>0.679 ± 0.013</td>
+              </tr>
+              <tr><td><strong>3UTRBERT (ResNet)</strong></td>
+              <td><strong>0.967 ± 0.001</strong></td> <td>0.912 ± 0.007</td><td>0.919 ± 0.004</td>
+                 <td>0.954 ± 0.001</td> <td>0.869 ± 0.004</td><td>0.876 ± 0.003</td>
+                 <td>0.727 ± 0.006</td> <td>0.476 ± 0.013</td><td>0.514 ± 0.011</td>
+                 <td>0.775 ± 0.003</td> <td>0.656 ± 0.016</td><td>0.663 ± 0.015</td>
+              </tr>
+              <tr><td><strong>SpliceBERT (ResNet)</strong></td>
+              <td>0.965 ± 0.001</td> <td><strong>0.935 ± 0.001</strong></td><td><strong>0.940 ± 0.003</strong></td>
+                 <td>0.950 ± 0.001</td> <td><strong>0.898 ± 0.002</strong></td><td><strong>0.904 ± 0.005</strong></td>
+                 <td>0.792 ± 0.005</td> <td>0.514 ± 0.011</td><td>0.562 ± 0.012</td>
+                 <td>0.775 ± 0.002</td> <td>0.628 ± 0.011</td><td>0.641 ± 0.013</td>
+              </tr>
+              <tr><td><strong>UTR-LM (ResNet)</strong></td>
+              <td>0.945 ± 0.001</td> <td>0.861 ± 0.006</td><td>0.854 ± 0.009</td>
+                 <td>0.941 ± 0.001</td> <td>0.826 ± 0.007</td><td>0.829 ± 0.004</td>
+                 <td>0.678 ± 0.005</td> <td>0.436 ± 0.004</td><td>0.471 ± 0.006</td>
+                 <td>0.766 ± 0.004</td> <td>0.654 ± 0.011</td><td>0.657 ± 0.011</td>
+              </tr>
+              <tr><td><strong>RiNALMo (ResNet)</strong></td>
+              <td>0.931 ± 0.002</td> <td>0.871 ± 0.004</td><td>0.854 ± 0.003</td>
+                 <td>0.928 ± 0.002</td> <td>0.864 ± 0.007</td><td>0.857 ± 0.015</td>
+                 <td>0.711 ± 0.003</td> <td>0.453 ± 0.015</td><td>0.502 ± 0.011</td>
+                 <td>0.769 ± 0.002</td> <td>0.661 ± 0.010</td><td>0.676 ± 0.012</td>
+              </tr>
 
 
              </tbody>
@@ -1471,28 +1646,221 @@ leading to insufficient and biased assessments that hinder their practical appli
           <p>
             <strong>mRNA-related function tasks</strong> include three subtasks:
              <br>
-            <br>（1）<strong>Coding Potential Prediction (CPP)</strong> is a binary-classification task that distinguishes coding RNAs from non-coding ones, aiming to improve transcript coding potential for mRNA-based therapeutics.
+            <br><strong> (1) Coding Potential Prediction (CPP)</strong> is a binary-classification task that distinguishes coding RNAs from non-coding ones, aiming to improve transcript coding potential for mRNA-based therapeutics.
              <br>
-            <br>（2）<strong>mRNA Subcellular Localization (mSL)</strong> is a multi-label classification task that assigns each mRNA sequence one or more subcellular localization labels, predicting spatial distribution patterns that modulate protein synthesis and cellular function.
+            <br><strong> (2) mRNA Subcellular Localization (mSL)</strong> is a multi-label classification task that assigns each mRNA sequence one or more subcellular localization labels, predicting spatial distribution patterns that modulate protein synthesis and cellular function.
              <br>
-            <br>（3）<strong>Ribosome Loading Prediction (RLP)</strong> is a regression task that estimates the Mean Ribosome Load (MRL) of a given 5′ untranslated region (5′UTR), quantifying ribosome occupancy to optimize translational efficiency.
+            <br><strong> (3) Ribosome Loading Prediction (RLP)</strong> is a regression task that estimates the Mean Ribosome Load (MRL) of a given 5′ untranslated region (5′UTR), quantifying ribosome occupancy to optimize translational efficiency.
           </p>
         </div>
 
 
+        <div class="table-container">
+          <table class="table is-striped is-bordered is-hoverable is-fullwidth tablesorter" id="performance-table7">
+            <thead>
+              <tr>
+                <th rowspan="2">Model (Module)</th>
+                <th colspan="5" class="has-text-centered" class="is-size-12">Coding Potential</th>
+                <th colspan="1" class="has-text-centered" class="is-size-12">mRNA SL</th>
+                 <th colspan="1" class="has-text-centered" class="is-size-12">Ribosome Loading</th>
+              </tr>
+              <tr>
+                 <th>Accuracy (human)</th>
+                 <th>Accuracy (mouse)</th>
+                <th>Accuracy (zebrafish)</th>
+                 <th>Accuracy (fruit_fly)</th>
+                <th>Accuracy (s_cerevisia)</th>
+                 <th>F1</th>
+                  <th>R²</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr><td><strong>One-hot</strong></td>
+                <td>0.945 ± 0.001</td> <td>0.924 ± 0.002</td>
+                 <td>0.900 ± 0.005</td> <td>0.924 ± 0.009</td><td>0.721 ± 0.017</td>
+                <td>0.583 ± 0.010</td>
+                <td>0.648 ± 0.012</td>
+              </tr>
+              <tr><td><strong>Dense</strong></td>
+               <td>0.946 ± 0.001</td> <td>0.922 ± 0.002</td>
+                 <td>0.900 ± 0.007</td> <td>0.872 ± 0.074</td><td>0.713 ± 0.012</td>
+                <td>0.588 ± 0.010</td>
+                <td>0.641 ± 0.027</td>
+              </tr>
+
+
+              <tr><td><strong>DNABERT2 (MLP)</strong></td>
+               <td>0.942 ± 0.001</td> <td>0.940 ± 0.001</td>
+                 <td>0.895 ± 0.004</td> <td>0.873 ± 0.007</td><td>0.774 ± 0.007</td>
+                <td>0.516 ± 0.014</td>
+                <td>0.284 ± 0.019</td>
+              </tr>
+              <tr><td><strong>HyenaDNA (MLP)</strong></td>
+               <td>0.896 ± 0.004</td> <td>0.872 ± 0.011</td>
+                 <td>0.886 ± 0.005</td> <td>0.897 ± 0.000</td><td>0.606 ± 0.005</td>
+                <td>0.494 ± 0.010</td>
+                <td>0.154 ± 0.019</td>
+              </tr>
+              <tr><td><strong>NT (MLP)</strong></td>
+               <td>0.895 ± 0.003</td> <td>0.877 ± 0.003</td>
+                 <td>0.874 ± 0.004</td> <td>0.914 ± 0.001</td><td>0.694 ± 0.006</td>
+                <td>0.476 ± 0.003</td>
+                <td>0.113 ± 0.008</td>
+              </tr>
+              <tr><td><strong>RNABERT (MLP)</strong></td>
+               <td>0.726 ± 0.003</td> <td>0.744 ± 0.001</td>
+                 <td>0.640 ± 0.009</td> <td>0.482 ± 0.014</td><td>0.165 ± 0.011</td>
+                <td>0.425 ± 0.000</td>
+                <td>-0.036 ± 0.010</td>
+              </tr>
+              <tr><td><strong>RNA-FM (MLP)</strong></td>
+               <td>0.941 ± 0.002</td> <td>0.942 ± 0.001</td>
+                 <td>0.908 ± 0.007</td> <td>0.912 ± 0.018</td><td>0.779 ± 0.018</td>
+                <td>0.520 ± 0.011</td>
+                <td>0.169 ± 0.009</td>
+              </tr>
+              <tr><td><strong>3UTRBERT (MLP)</strong></td>
+                  <td>0.905 ± 0.002</td> <td>0.918 ± 0.003</td>
+                 <td>0.885 ± 0.003</td> <td>0.744 ± 0.013</td><td>0.827 ± 0.016</td>
+                <td>0.516 ± 0.010</td>
+                <td>0.299 ± 0.021</td>
+              </tr>
+              <tr><td><strong>SpliceBERT (MLP)</strong></td>
+                  <td>0.962 ± 0.000</td> <td>0.964 ± 0.001</td>
+                 <td>0.928 ± 0.002</td> <td>0.916 ± 0.012</td><td>0.790 ± 0.013</td>
+                <td>0.560 ± 0.004</td>
+                <td>0.158 ± 0.005</td>
+              </tr>
+              <tr><td><strong>UTR-LM (MLP)</strong></td>
+                  <td>0.899 ± 0.001</td> <td>0.891 ± 0.002</td>
+                 <td>0.867 ± 0.008</td> <td>0.864 ± 0.014</td><td>0.672 ± 0.018</td>
+                <td>0.476 ± 0.005</td>
+                <td>-0.006 ± 0.019</td>
+              </tr>
+              <tr><td><strong>RiNALMo (MLP)</strong></td>
+                  <td>0.969 ± 0.001</td> <td>0.976 ± 0.000</td>
+                 <td>0.937 ± 0.004</td> <td>0.948 ± 0.012</td><td>0.713 ± 0.010</td>
+                <td>0.476 ± 0.014</td>
+                <td>0.230 ± 0.003</td>
+              </tr>
 
 
 
+              <tr><td><strong>DNABERT2 (CNN)</strong></td>
+               <td>0.955 ± 0.001</td> <td>0.939 ± 0.001</td>
+                 <td>0.899 ± 0.001</td> <td>0.885 ± 0.007</td><td>0.759 ± 0.001</td>
+                <td>0.530 ± 0.008</td>
+                <td>0.335 ± 0.014</td>
+              </tr>
+              <tr><td><strong>HyenaDNA (CNN)</strong></td>
+               <td>0.927 ± 0.003</td> <td>0.905 ± 0.004</td>
+                 <td>0.875 ± 0.002</td> <td>0.911 ± 0.002</td><td>0.677 ± 0.008</td>
+                <td>0.492 ± 0.005</td>
+                <td>0.453 ± 0.008</td>
+              </tr>
+              <tr><td><strong>NT (CNN)</strong></td>
+               <td>0.911 ± 0.002</td> <td>0.880 ± 0.001</td>
+                 <td>0.892 ± 0.002</td> <td>0.905 ± 0.005</td><td>0.719 ± 0.024</td>
+                <td>0.529 ± 0.015</td>
+                <td>0.285 ± 0.009</td>
+              </tr>
+              <tr><td><strong>RNABERT (CNN)</strong></td>
+               <td>0.784 ± 0.005</td> <td>0.780 ± 0.003</td>
+                 <td>0.752 ± 0.003</td> <td>0.834 ± 0.003</td><td>0.538 ± 0.014</td>
+                <td>0.425 ± 0.000</td>
+                <td>0.407 ± 0.022</td>
+              </tr>
+              <tr><td><strong>RNA-FM (CNN)</strong></td>
+               <td>0.952 ± 0.001</td> <td>0.948 ± 0.003</td>
+                 <td>0.912 ± 0.001</td> <td>0.888 ± 0.023</td><td>0.713 ± 0.036</td>
+                <td>0.544 ± 0.009</td>
+                <td>0.488 ± 0.008</td>
+              </tr>
+              <tr><td><strong>3UTRBERT (CNN)</strong></td>
+                  <td>0.925 ± 0.003</td> <td>0.921 ± 0.002</td>
+                 <td>0.901 ± 0.003</td> <td>0.819 ± 0.020</td><td>0.807 ± 0.009</td>
+                <td>0.569 ± 0.029</td>
+                <td>0.481 ± 0.003</td>
+              </tr>
+              <tr><td><strong>SpliceBERT (CNN)</strong></td>
+                  <td>0.967 ± 0.001</td> <td>0.964 ± 0.001</td>
+                 <td>0.924 ± 0.004</td> <td>0.872 ± 0.012</td><td>0.719 ± 0.041</td>
+                <td>0.567 ± 0.021</td>
+                <td>0.461 ± 0.022</td>
+              </tr>
+              <tr><td><strong>UTR-LM (CNN)</strong></td>
+                  <td>0.953 ± 0.002</td> <td>0.946 ± 0.001</td>
+                 <td>0.911 ± 0.005</td> <td>0.869 ± 0.008</td><td>0.748 ± 0.026</td>
+                <td>0.509 ± 0.016</td>
+                <td>0.401 ± 0.019</td>
+              </tr>
+              <tr><td><strong>RiNALMo (CNN)</strong></td>
+                  <td>0.928 ± 0.003</td> <td>0.913 ± 0.000</td>
+                 <td>0.906 ± 0.001</td> <td>0.925 ± 0.002</td><td>0.669 ± 0.039</td>
+                <td>0.594 ± 0.010</td>
+                <td>0.501 ± 0.004</td>
+              </tr>
 
 
 
-
-
-
-
-
-
-
+              <tr><td><strong>DNABERT2 (ResNet)</strong></td>
+               <td>0.941 ± 0.003</td> <td>0.922 ± 0.005</td>
+                 <td>0.887 ± 0.007</td> <td>0.895 ± 0.008</td><td>0.732 ± 0.014</td>
+                <td>0.597 ± 0.010</td>
+                <td>0.427 ± 0.010</td>
+              </tr>
+              <tr><td><strong>HyenaDNA (ResNet)</strong></td>
+               <td>0.935 ± 0.001</td> <td>0.908 ± 0.003</td>
+                 <td>0.899 ± 0.005</td> <td>0.914 ± 0.004</td><td>0.643 ± 0.003</td>
+                <td>0.593 ± 0.012</td>
+                <td>0.637 ± 0.012</td>
+              </tr>
+              <tr><td><strong>NT (ResNet)</strong></td>
+               <td>0.919 ± 0.001</td> <td>0.888 ± 0.002</td>
+                 <td>0.884 ± 0.003</td> <td>0.913 ± 0.005</td><td>0.637 ± 0.007</td>
+                <td>0.598 ± 0.007</td>
+                <td>0.419 ± 0.015</td>
+              </tr>
+              <tr><td><strong>RNABERT (ResNet)</strong></td>
+               <td>0.854 ± 0.003</td> <td>0.832 ± 0.005</td>
+                 <td>0.790 ± 0.010</td> <td>0.834 ± 0.009</td><td>0.637 ± 0.038</td>
+                <td>0.523 ± 0.018</td>
+                <td>0.630 ± 0.011</td>
+              </tr>
+              <tr><td><strong>RNA-FM (ResNet)</strong></td>
+               <td>0.955 ± 0.001</td> <td>0.948 ± 0.001</td>
+                 <td>0.911 ± 0.002</td> <td>0.871 ± 0.037</td><td>0.704 ± 0.037</td>
+                <td>0.591 ± 0.007</td>
+                <td>0.644 ± 0.023</td>
+              </tr>
+              <tr><td><strong>3UTRBERT (ResNet)</strong></td>
+                  <td>0.916 ± 0.002</td> <td>0.916 ± 0.001</td>
+                 <td>0.889 ± 0.006</td> <td>0.840 ± 0.004</td><td>0.817 ± 0.014</td>
+                <td>0.587 ± 0.004</td>
+                <td>0.608 ± 0.001</td>
+              </tr>
+              <tr><td><strong>SpliceBERT (ResNet)</strong></td>
+                  <td>0.968 ± 0.001</td> <td>0.965 ± 0.001</td>
+                 <td>0.931 ± 0.007</td> <td>0.914 ± 0.011</td><td>0.737 ± 0.028</td>
+                <td>0.607 ± 0.022</td>
+                <td>0.635 ± 0.008</td>
+              </tr>
+              <tr><td><strong>UTR-LM (ResNet)</strong></td>
+                  <td>0.954 ± 0.001</td> <td>0.948 ± 0.000</td>
+                 <td>0.920 ± 0.004</td> <td>0.911 ± 0.019</td><td>0.745 ± 0.010</td>
+                <td>0.608 ± 0.004</td>
+                <td>0.647 ± 0.011</td>
+              </tr>
+              <tr><td><strong>RiNALMo (ResNet)</strong></td>
+                  <td>0.972 ± 0.001</td> <td>0.977 ± 0.001</td>
+                 <td>0.932 ± 0.000</td> <td>0.972 ± 0.002</td><td>0.843 ± 0.000</td>
+                <td>0.604 ± 0.004</td>
+                <td>0.643 ± 0.014</td>
+              </tr>
+             </tbody>
+          </table>
+        </div>
 
         <h2 class="title is-4by3" id="RNA-ncrna-tasks">ncRNA-related Function Tasks</h2>
 
@@ -1500,13 +1868,238 @@ leading to insufficient and biased assessments that hinder their practical appli
         <p>
           <strong>ncRNA-related function tasks</strong> include three subtasks:
           <br>
-          <br>（1）<strong>ncRNA Category Classification (NCC)</strong> is a multi-label classification task that assigns each ncRNA sequence to one or more of 13 predefined categories, capturing conserved sequence patterns to elucidate non-coding regulatory roles.
+          <br> <strong> (1) ncRNA Category Classification (NCC)</strong> is a multi-label classification task that assigns each ncRNA sequence to one or more of 13 predefined categories, capturing conserved sequence patterns to elucidate non-coding regulatory roles.
           <br>
-          <br>（2）<strong>microRNA Subcellular Localization (miSL)</strong> is a multi-label classification task that predicts the subcellular localization of microRNAs, providing insights into their functional contexts and aiding therapeutic design.
+          <br> <strong> (2) microRNA Subcellular Localization (miSL)</strong> is a multi-label classification task that predicts the subcellular localization of microRNAs, providing insights into their functional contexts and aiding therapeutic design.
           <br>
-          <br>（3）<strong>gRNA Efficiency Prediction (gEP)</strong> is a regression task that estimates the cleavage efficiency of guide RNAs in the CRISPR–Cas9 system, enabling optimization of on-target genome editing performance.
+          <br> <strong> (3) gRNA Efficiency Prediction (gEP)</strong> is a regression task that estimates the cleavage efficiency of guide RNAs in the CRISPR–Cas9 system, enabling optimization of on-target genome editing performance.
         </p>
       </div>
+
+
+        <div class="table-container">
+          <table class="table is-striped is-bordered is-hoverable is-fullwidth tablesorter" id="performance-table8">
+            <thead>
+              <tr>
+                <th rowspan="3">Model (Module)</th>
+                <th colspan="1" class="has-text-centered" class="is-size-12">ncRNA Category</th>
+                <th colspan="2" class="has-text-centered" class="is-size-12">miRNA SL</th>
+                <th colspan="7" class="has-text-centered" class="is-size-12">gRNA Efficiency</th>
+              </tr>
+
+               <tr>
+                <th rowspan="2" class="has-text-centered" class="is-size-12">Accuracy</th>
+                 <th rowspan="2" class="has-text-centered" class="is-size-12">subACC</th>
+                 <th rowspan="2" class="has-text-centered" class="is-size-12">HLoss</th>
+
+                 <th rowspan="2" class="has-text-centered" class="is-size-12"><i>Average of 6 datasets</i></th>
+
+                 <th>mECS (Koike-Yusa)</th>
+                 <th>HEL (Labuhn)</th>
+                 <th>A375 (Shalem)</th>
+                 <th>HEK293T (Xi Xiang)</th>
+                 <th>Zebrafish (Gagnon)</th>
+                 <th>Zebrafish (Shkumatava)</th>
+
+              </tr>
+
+              <tr>
+                 <th>Spearman p</th>
+                 <th>Spearman p</th>
+                <th>Spearman p</th>
+                <th>Spearman p</th>
+                <th>Spearman p</th>
+                <th>Spearman p</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr><td><strong>One-hot</strong></td>
+                <td>0.947 ± 0.005</td><td>0.299 ± 0.017</td>
+                 <td>0.308 ± 0.001</td>
+                 <td><i>0.252</i></td>
+                 <td>0.262 ± 0.028</td> <td>0.095 ± 0.011</td> <td>0.202 ± 0.016</td> <td>0.457 ± 0.043</td> <td>0.307 ± 0.033</td> <td>0.191 ± 0.017</td>
+              </tr>
+              <tr><td><strong>Dense</strong></td>
+               <td>0.950 ± 0.008</td><td>0.322 ± 0.000</td>
+                 <td>0.307 ± 0.000</td>
+                <td><i>0.254</i></td>
+                 <td>0.294 ± 0.026</td> <td>0.105 ± 0.006</td> <td>0.207 ± 0.020</td> <td>0.488 ± 0.011</td> <td>0.264 ± 0.029</td> <td>0.166 ± 0.022</td>
+              </tr>
+
+              <tr><td><strong>DNABERT2 (MLP)</strong></td>
+               <td>0.839 ± 0.005</td><td>0.325 ± 0.022</td>
+                 <td>0.295 ± 0.028</td>
+                 <td><i>0.130</i></td>
+                 <td>0.149 ± 0.010</td> <td>0.019 ± 0.014</td> <td>0.098 ± 0.016</td> <td>0.207 ± 0.016</td> <td>0.206 ± 0.020</td> <td>0.101 ± 0.024</td>
+              </tr>
+              <tr><td><strong>HyenaDNA (MLP)</strong></td>
+               <td>0.676 ± 0.017</td><td>0.322 ± 0.000</td>
+                 <td>0.307 ± 0.000</td>
+                 <td><i>0.178</i></td>
+                 <td>0.140 ± 0.005</td> <td>0.080 ± 0.008</td> <td>0.143 ± 0.002</td> <td>0.324 ± 0.016</td> <td>0.239 ± 0.022</td> <td>0.143 ± 0.008</td>
+              </tr>
+              <tr><td><strong>NT (MLP)</strong></td>
+               <td>0.727 ± 0.009</td><td>0.322 ± 0.000</td>
+                 <td>0.307 ± 0.000</td>
+                 <td><i>0.171</i></td>
+                 <td>0.146 ± 0.006</td> <td>0.025 ± 0.004</td> <td>0.118 ± 0.005</td> <td>0.325 ± 0.013</td> <td>0.210 ± 0.011</td> <td>0.201 ± 0.010</td>
+              </tr>
+              <tr><td><strong>RNABERT (MLP)</strong></td>
+               <td>0.523 ± 0.007</td><td>0.322 ± 0.000</td>
+                 <td>0.307 ± 0.000</td>
+                 <td><i>0.129</i></td>
+                 <td>0.115 ± 0.005</td> <td>0.060 ± 0.003</td> <td>0.032 ± 0.002</td> <td>0.278 ± 0.003</td> <td>0.218 ± 0.007</td> <td>0.071 ± 0.023</td>
+              </tr>
+              <tr><td><strong>RNA-FM (MLP)</strong></td>
+               <td>0.965 ± 0.001</td><td>0.333 ± 0.008</td>
+                 <td>0.295 ± 0.004</td>
+                 <td><i>0.200</i></td>
+                 <td>0.193 ± 0.002</td> <td>-0.015 ± 0.001</td> <td>0.146 ± 0.003</td> <td>0.386 ± 0.007</td> <td>0.323 ± 0.012</td> <td>0.168 ± 0.013</td>
+              </tr>
+              <tr><td><strong>3UTRBERT (MLP)</strong></td>
+               <td>0.829 ± 0.003</td><td>0.302 ± 0.004</td>
+                 <td>0.308 ± 0.003</td>
+                 <td><i>0.157</i></td>
+                 <td>0.163 ± 0.006</td> <td>0.048 ± 0.001</td> <td>0.111 ± 0.006</td> <td>0.279 ± 0.038</td> <td>0.206 ± 0.037</td> <td>0.134 ± 0.010</td>
+              </tr>
+              <tr><td><strong>SpliceBERT (MLP)</strong></td>
+               <td>0.849 ± 0.008</td><td>0.325 ± 0.004</td>
+                 <td>0.300 ± 0.003</td>
+                 <td><i>0.134</i></td>
+                 <td>0.142 ± 0.015</td> <td>0.017 ± 0.012</td> <td>0.081 ± 0.019</td> <td>0.233 ± 0.069</td> <td>0.183 ± 0.039</td> <td>0.151 ± 0.035</td>
+              </tr>
+              <tr><td><strong>UTR-LM (MLP)</strong></td>
+               <td>0.576 ± 0.009</td><td>0.322 ± 0.000</td>
+                 <td>0.307 ± 0.000</td>
+                 <td><i>0.167</i></td>
+                 <td>0.156 ± 0.011</td> <td>0.014 ± 0.006</td> <td>0.140 ± 0.003</td> <td>0.294 ± 0.006</td> <td>0.267 ± 0.020</td> <td>0.132 ± 0.011</td>
+              </tr>
+              <tr><td><strong>RiNALMo (MLP)</strong></td>
+               <td>0.957 ± 0.015</td><td>0.328 ± 0.005</td>
+                 <td>0.278 ± 0.006</td>
+                 <td><i>0.184</i></td>
+                 <td>0.163 ± 0.005</td> <td>0.022 ± 0.026</td> <td>0.127 ± 0.021</td> <td>0.324 ± 0.029</td> <td>0.284 ± 0.001</td> <td>0.183 ± 0.030</td>
+              </tr>
+
+
+
+             <tr><td><strong>DNABERT2 (CNN)</strong></td>
+               <td>0.900 ± 0.007</td><td>0.356 ± 0.012</td>
+                 <td>0.264 ± 0.003</td>
+                 <td><i>0.137</i></td>
+                 <td>0.145 ± 0.006</td> <td>0.065 ± 0.010</td> <td>0.084 ± 0.010</td> <td>0.233 ± 0.015</td> <td>0.212 ± 0.009</td> <td>0.094 ± 0.032</td>
+              </tr>
+              <tr><td><strong>HyenaDNA (CNN)</strong></td>
+               <td>0.804 ± 0.018</td><td>0.322 ± 0.000</td>
+                 <td>0.307 ± 0.000</td>
+                 <td><i>0.228</i></td>
+                 <td>0.218 ± 0.007</td> <td>0.089 ± 0.004</td> <td>0.174 ± 0.008</td> <td>0.392 ± 0.007</td> <td>0.300 ± 0.007</td> <td>0.196 ± 0.012</td>
+              </tr>
+              <tr><td><strong>NT (CNN)</strong></td>
+               <td>0.895 ± 0.022</td><td>0.322 ± 0.000</td>
+                 <td>0.307 ± 0.000</td>
+                 <td><i>0.249</i></td>
+                 <td>0.241 ± 0.004</td> <td>0.067 ± 0.012</td> <td>0.232 ± 0.006</td> <td>0.485 ± 0.007</td> <td>0.208 ± 0.014</td> <td>0.264 ± 0.001</td>
+              </tr>
+              <tr><td><strong>RNABERT (CNN)</strong></td>
+               <td>0.715 ± 0.009</td><td>0.322 ± 0.000</td>
+                 <td>0.307 ± 0.000</td>
+                <td><i>0.195</i></td>
+                 <td>0.222 ± 0.011</td> <td>0.141 ± 0.009</td> <td>0.119 ± 0.003</td> <td>0.395 ± 0.012</td> <td>0.201 ± 0.012</td> <td>0.091 ± 0.007</td>
+              </tr>
+              <tr><td><strong>RNA-FM (CNN)</strong></td>
+               <td>0.967 ± 0.003</td><td>0.342 ± 0.020</td>
+                 <td>0.268 ± 0.007</td>
+                 <td><i>0.256</i></td>
+                 <td>0.253 ± 0.008</td> <td>0.072 ± 0.005</td> <td>0.208 ± 0.014</td> <td>0.519 ± 0.015</td> <td>0.293 ± 0.024</td> <td>0.193 ± 0.020</td>
+              </tr>
+              <tr><td><strong>3UTRBERT (CNN)</strong></td>
+               <td>0.918 ± 0.003</td><td>0.311 ± 0.011</td>
+                 <td>0.301 ± 0.005</td>
+                 <td><i>0.175</i></td>
+                 <td>0.207 ± 0.014</td> <td>0.033 ± 0.003</td> <td>0.130 ± 0.023</td> <td>0.316 ± 0.035</td> <td>0.236 ± 0.014</td> <td>0.128 ± 0.012</td>
+              </tr>
+              <tr><td><strong>SpliceBERT (CNN)</strong></td>
+               <td>0.915 ± 0.006</td><td>0.322 ± 0.000</td>
+                 <td>0.307 ± 0.000</td>
+                 <td><i>0.187</i></td>
+                 <td>0.198 ± 0.004</td> <td>0.041 ± 0.016</td> <td>0.102 ± 0.012</td> <td>0.343 ± 0.021</td> <td>0.274 ± 0.026</td> <td>0.166 ± 0.034</td>
+              </tr>
+              <tr><td><strong>UTR-LM (CNN)</strong></td>
+               <td>0.909 ± 0.004</td><td>0.322 ± 0.000</td>
+                 <td>0.307 ± 0.000</td>
+                <td><i>0.209</i></td>
+                 <td>0.197 ± 0.004</td> <td>0.070 ± 0.017</td> <td>0.155 ± 0.002</td> <td>0.348 ± 0.012</td> <td>0.296 ± 0.036</td> <td>0.191 ± 0.023</td>
+              </tr>
+              <tr><td><strong>RiNALMo (CNN)</strong></td>
+               <td>0.974 ± 0.002</td><td>0.325 ± 0.010</td>
+                 <td>0.264 ± 0.010</td>
+                 <td><i>0.253</i></td>
+                 <td>0.269 ± 0.023</td> <td>0.073 ± 0.032</td> <td>0.216 ± 0.013</td> <td>0.480 ± 0.023</td> <td>0.302 ± 0.016</td> <td>0.180 ± 0.010</td>
+              </tr>
+
+
+
+
+             <tr><td><strong>DNABERT2 (ResNet)</strong></td>
+               <td>0.883 ± 0.011</td><td>0.299 ± 0.062</td>
+                 <td>0.294 ± 0.031</td>
+                 <td><i>0.103</i></td>
+                 <td>0.131 ± 0.011</td> <td>0.043 ± 0.016</td> <td>0.073 ± 0.020</td> <td>0.180 ± 0.007</td> <td>0.131 ± 0.034</td> <td>0.060 ± 0.053</td>
+              </tr>
+              <tr><td><strong>HyenaDNA (ResNet)</strong></td>
+               <td>0.941 ± 0.008</td><td>0.302 ± 0.017</td>
+                 <td>0.285 ± 0.017</td>
+                 <td><i>0.216</i></td>
+                 <td>0.229 ± 0.043</td> <td>0.111 ± 0.018</td> <td>0.180 ± 0.025</td> <td>0.423 ± 0.076</td> <td>0.207 ± 0.060</td> <td>0.146 ± 0.046</td>
+              </tr>
+              <tr><td><strong>NT (ResNet)</strong></td>
+               <td>0.905 ± 0.010</td><td>0.291 ± 0.028</td>
+                 <td>0.309 ± 0.020</td>
+                <td><i>0.189</i></td>
+                 <td>0.179 ± 0.022</td> <td>0.033 ± 0.045</td> <td>0.162 ± 0.018</td> <td>0.382 ± 0.015</td> <td>0.173 ± 0.089</td> <td>0.206 ± 0.049</td>
+              </tr>
+              <tr><td><strong>RNABERT (ResNet)</strong></td>
+               <td>0.947 ± 0.004</td><td>0.311 ± 0.016</td>
+                 <td>0.308 ± 0.001</td>
+                 <td><i>0.164</i></td>
+                 <td>0.188 ± 0.024</td> <td>0.102 ± 0.026</td> <td>0.124 ± 0.019</td> <td>0.259 ± 0.046</td> <td>0.172 ± 0.015</td> <td>0.037 ± 0.021</td>
+              </tr>
+              <tr><td><strong>RNA-FM (ResNet)</strong></td>
+               <td>0.975 ± 0.002</td><td>0.362 ± 0.035</td>
+                 <td>0.263 ± 0.011</td>
+                 <td><i>0.225</i></td>
+                 <td>0.229 ± 0.015</td> <td>0.045 ± 0.024</td> <td>0.175 ± 0.008</td> <td>0.440 ± 0.044</td> <td>0.273 ± 0.040</td> <td>0.188 ± 0.036</td>
+              </tr>
+              <tr><td><strong>3UTRBERT (ResNet)</strong></td>
+               <td>0.941 ± 0.002</td><td>0.285 ± 0.026</td>
+                 <td>0.302 ± 0.020</td>
+                 <td><i>0.166</i></td>
+                 <td>0.169 ± 0.022</td> <td>0.039 ± 0.007</td> <td>0.126 ± 0.007</td> <td>0.319 ± 0.014</td> <td>0.230 ± 0.033</td> <td>0.110 ± 0.026</td>
+              </tr>
+              <tr><td><strong>SpliceBERT (ResNet)</strong></td>
+               <td>0.945 ± 0.006</td><td>0.308 ± 0.038</td>
+                 <td>0.273 ± 0.011</td>
+                 <td><i>0.184</i></td>
+                 <td>0.192 ± 0.033</td> <td>0.047 ± 0.037</td> <td>0.131 ± 0.024</td> <td>0.349 ± 0.061</td> <td>0.232 ± 0.020</td> <td>0.153 ± 0.036</td>
+              </tr>
+              <tr><td><strong>UTR-LM (ResNet)</strong></td>
+               <td>0.958 ± 0.006</td><td>0.331 ± 0.009</td>
+                 <td>0.294 ± 0.005</td>
+                 <td><i>0.246</i></td>
+                 <td>0.240 ± 0.011</td> <td>0.074 ± 0.018</td> <td>0.191 ± 0.010</td> <td>0.445 ± 0.020</td> <td>0.345 ± 0.045</td> <td>0.183 ± 0.030</td>
+              </tr>
+              <tr><td><strong>RiNALMo (ResNet)</strong></td>
+               <td>0.969 ± 0.002</td><td>0.302 ± 0.005</td>
+                 <td>0.266 ± 0.001</td>
+                 <td><i>0.237</i></td>
+                 <td>0.233 ± 0.020</td> <td>0.049 ± 0.049</td> <td>0.209 ± 0.006</td> <td>0.468 ± 0.011</td> <td>0.287 ± 0.017</td> <td>0.177 ± 0.030</td>
+              </tr>
+
+             </tbody>
+          </table>
+        </div>
 
 
 
@@ -1542,21 +2135,6 @@ leading to insufficient and biased assessments that hinder their practical appli
 </body>
 
 
-
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title is-3 has-text-centered">BibTeX</h2>
-    <pre><code>@@misc{ye2024proteinbench,
-      title={ProteinBench: A Holistic Evaluation of Protein Foundation Models}, 
-      author={Fei Ye and Zaixiang Zheng and Dongyu Xue and Yuning Shen and Lihao Wang and Yiming Ma and Yan Wang and Xinyou Wang and Xiangxin Zhou and Quanquan Gu},
-      year={2024},
-      eprint={2409.06744},
-      archivePrefix={arXiv},
-      primaryClass={q-bio.QM},
-      url={https://arxiv.org/abs/2409.06744}, 
-}</code></pre>
-  </div>
-</section>
 
 
 <footer class="footer">
