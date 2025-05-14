@@ -120,7 +120,7 @@
           </div>
           <p>
 Pre-trained language models (pLMs) have advanced our understanding of RNA biology. However, current evaluation frameworks remain limited in capturing the inherent complexity of RNA, 
-leading to insufficient and biased assessments that hinder their practical applications. Here, we introduce <img src="images/logo.png" style="width:1.6em;vertical-align: middle" alt="Logo"/><span class="  RNAscope"> RNAscope</span>, a comprehensive benchmarking framework designed to gauge RNA pLMs via
+leading to insufficient and biased assessments that hinder their practical applications. Here, we introduce <img src="images/logo.png" style="width:1.6em;vertical-align: middle" alt="Logo"/><span class="  RNAscope"> <strong>RNAscope</strong></span>, a comprehensive benchmarking framework designed to gauge RNA pLMs via
  structure prediction, interaction classification, and function characterization. This framework includes 1,253 experiments spanning diverse subtasks of varying complexity and enables systematic
  model comparison with consistent architectural modules. Model assessment shows that generalization of sequence flexibility across RNA families, target contexts, and environmental features
  remains challenging for existing models. RNAscope provides a systematic, robust, and fair evaluation framework to accelerate RNA modeling.
@@ -152,7 +152,7 @@ leading to insufficient and biased assessments that hinder their practical appli
     /* Adjust table layout for better width control */
     .table th, .table td {
       padding: 15px 20px;  /* Increase padding to make cells larger */
-      min-width: 140px;    /* Set a minimum width for each cell */
+      min-width: 150px;    /* Set a minimum width for each cell */
       white-space: nowrap; /* Prevent text from wrapping within cells */
       height: 40px;
     }
@@ -172,16 +172,55 @@ leading to insufficient and biased assessments that hinder their practical appli
     font-family: 'Arial', monospace;
     font-size: 14px;
     font-weight: bold;
-    background-color: #f4f4f4;  /* 背景色 */
+    background-color: #dff1ff;  /* background color */
     }
 
     #performance-table td {
     font-family: 'Georgia', serif;
     font-size: 12px;
     }
+
+    #performance-table tbody tr:nth-child(odd) td {
+      background:#f9f9f9 !important;
+    }
+
+    #performance-table tbody tr:nth-child(even) td {
+      background:#ffffff !important;
+    }
+
+    /*#performance-table tr:hover {*/
+    /*  font-weight:bold !important;*/
+    /*  background-color: #e46b8e !important;*/
+    /*  !*font-weight: bold !important;*!*/
+    /*}*/
+    /* */
+    #performance-table tbody tr:hover {
+      background:#004db6 !important;
+    }
+
+    #performance-table tbody tr:hover td,
+    #performance-table tbody tr:hover th {
+      color:#004db6 !important;
+      font-weight:bold;
+    }
+
+    #performance-table tbody tr:hover a {
+      color:inherit !important;
+    }
+
+    .ssp-desc code{
+    background:#f5f5f5;   /* 浅灰底 */
+    color:#000 !important;/* 黑字，!important 盖掉 Bulma 的红色 */
+    font-family:inherit;  /* 跟正文同字体；可删保持等宽 */
+    padding:0 0.2em;      /* 轻微内边距，视觉舒服 */
+    border-radius:3px;    /* 圆角，可不要 */
+    }
+
   </style>
 </head>
 <body>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
 
 <section class="section">
   <div class="container">
@@ -191,11 +230,8 @@ leading to insufficient and biased assessments that hinder their practical appli
 
         <div class="content has-text-justified">
           <p class="mt-3">
-            We benchmark RNA sequence understanding through three key tasks:
-            <strong>secondary structure prediction</strong> (base-pairing likelihood),
-            <strong>chemical reactivity prediction</strong> (nucleotide accessibility),
-            and <strong>contact map prediction</strong> (3-D spatial contacts).
-            Results are reported as <em>mean ± std</em> over three seeds.
+            RNA sequences determine structures. This panel outlines tasks for inferring RNA structure from one-dimensional (1D) sequence, including <strong>secondary structure prediction</strong> for base-pairing likelihood, <strong>chemical reactivity prediction</strong> for structural dynamics and nucleotide accessibility, and <strong>contact map prediction</strong> for spatial interactions essential to three-dimensional topology. Together, these tasks establish a sub-framework for understanding the structural diversity of RNA across families.
+            Results are reported as the <em>mean ± standard deviation</em> across three independent runs using different random seeds.
           </p>
         </div>
 
@@ -203,6 +239,17 @@ leading to insufficient and biased assessments that hinder their practical appli
         <!-- 1. Secondary Structure Prediction                       -->
         <!-- ======================================================= -->
         <h3 class="subtitle is-4">(1) Secondary Structure Prediction</h3>
+         <div class="content has-text-justified">
+            <p>
+              <strong>Secondary Structure Prediction (SSP)</strong> is formulated as a binary-classification problem in which the model
+              predicts the pairing state&nbsp;\(y_i \in \{0,1\}\) of each nucleotide&nbsp;\(x_i\) in an RNA sequence, thereby capturing its
+              base-pairing pattern. The benchmark comprises three independent datasets—<code style="background:#f5f5f5;color:#000;">bpRNA</code>,<code style="background:#f5f5f5;color:#000;">SetA</code>, and <code style="background:#f5f5f5;color:#000;">SetB</code>—each split into
+              two evaluation subsets: an <em>intra-family</em> split (training and test sequences drawn from the same RNA family) and an
+              <em>inter-family</em> split (training and test sequences drawn from different RNA families).
+            </p>
+         </div>
+
+
         <div class="table-container">
           <table class="table is-striped is-bordered is-hoverable is-fullwidth tablesorter" id="performance-table">
             <thead>
@@ -214,81 +261,279 @@ leading to insufficient and biased assessments that hinder their practical appli
               </tr>
               <tr>
                 <!-- bpRNA -->
-                <th>Intra Precision</th><th>Intra Recall</th><th>Intra F1</th>
-                <th>Inter Precision</th><th>Inter Recall</th><th>Inter F1</th>
+                <th>Precision<sub>Intra-Family</sub></th><th>Recall<sub>Intra-Family</sub></th><th>F1<sub>Intra-Family</sub></th>
+                <th>Precision<sub>Inter-Family</sub></th><th>Recall<sub>Inter-Family</sub></th><th>F1<sub>Inter-Family</sub></th>
                 <!-- Set A -->
-                <th>Intra Precision</th><th>Intra Recall</th><th>Intra F1</th>
-                <th>Inter Precision</th><th>Inter Recall</th><th>Inter F1</th>
+                <th>Precision<sub>Intra-Family</sub></th><th>Recall<sub>Intra-Family</sub></th><th>F1<sub>Intra-Family</sub></th>
+                <th>Precision<sub>Inter-Family</sub></th><th>Recall<sub>Inter-Family</sub></th><th>F1<sub>Inter-Family</sub></th>
                 <!-- Set B -->
-                <th>Intra Precision</th><th>Intra Recall</th><th>Intra F1</th>
-                <th>Inter Precision</th><th>Inter Recall</th><th>Inter F1</th>
+                <th>Precision<sub>Intra-Family</sub></th><th>Recall<sub>Intra-Family</sub></th><th>F1<sub>Intra-Family</sub></th>
+                <th>Precision<sub>Inter-Family</sub></th><th>Recall<sub>Inter-Family</sub></th><th>F1<sub>Inter-Family</sub></th>
               </tr>
             </thead>
 
             <tbody>
-              <tr><td>One-hot</td>
+              <tr><td><strong>One-hot</strong></td>
                 <!-- bpRNA -->
-                <td>0.465 ± 0.008</td><td>0.668 ± 0.021</td><td>0.548 ± 0.011</td> <!-- bpRNA Intra -->
-                <td>0.399 ± 0.002</td><td>0.608 ± 0.022</td><td>0.484 ± 0.010</td> <!-- bpRNA Inter -->
+                <td>0.465 ± 0.008</td><td>0.668 ± 0.021</td><td>0.548 ± 0.003</td> <!-- bpRNA Intra -->
+                <td>0.399 ± 0.002</td><td>0.608 ± 0.022</td><td>0.482 ± 0.006</td> <!-- bpRNA Inter -->
                 <!-- SetA -->
-                <td>0.630 ± 0.023</td><td>0.763 ± 0.050</td><td>0.692 ± 0.026</td> <!-- SetA Intra -->
-                <td>0.278 ± 0.010</td><td>0.455 ± 0.073</td><td>0.346 ± 0.023</td> <!-- SetA Inter -->
+                <td>0.630 ± 0.023</td><td>0.763 ± 0.050</td><td>0.689 ± 0.007</td> <!-- SetA Intra -->
+                <td>0.278 ± 0.010</td><td>0.455 ± 0.073</td><td>0.343 ± 0.014</td> <!-- SetA Inter -->
                 <!-- SetB -->
-                <td>0.438 ± 0.022</td><td>0.320 ± 0.021</td><td>0.377 ± 0.019</td> <!-- SetB Intra -->
-                <td>0.428 ± 0.015</td><td>0.343 ± 0.016</td><td>0.386 ± 0.012</td> <!-- SetB Inter -->
+                <td>0.438 ± 0.022</td><td>0.320 ± 0.021</td><td>0.369 ± 0.008</td> <!-- SetB Intra -->
+                <td>0.605 ± 0.008</td><td>0.442 ± 0.035</td><td>0.510 ± 0.021</td> <!-- SetB Inter -->
               </tr>
 
               <!-- Dense model -->
-              <tr><td>Dense</td>
+              <tr><td><strong>Dense</strong></td>
                 <!-- bpRNA -->
-                <td>0.433 ± 0.015</td><td>0.763 ± 0.039</td><td>0.548 ± 0.014</td> <!-- bpRNA Intra -->
-                <td>0.387 ± 0.006</td><td>0.712 ± 0.047</td><td>0.504 ± 0.017</td> <!-- bpRNA Inter -->
+                <td>0.433 ± 0.015</td><td>0.763 ± 0.039</td><td>0.552 ± 0.002</td> <!-- bpRNA Intra -->
+                <td>0.387 ± 0.006</td><td><strong>0.712 ± 0.047</strong></td><td>0.501 ± 0.007</td> <!-- bpRNA Inter -->
                 <!-- SetA -->
-                <td>0.628 ± 0.013</td><td>0.777 ± 0.029</td><td>0.692 ± 0.018</td> <!-- SetA Intra -->
-                <td>0.277 ± 0.006</td><td>0.472 ± 0.047</td><td>0.366 ± 0.021</td> <!-- SetA Inter -->
+                <td>0.628 ± 0.013</td><td>0.777 ± 0.029</td><td>0.695 ± 0.005</td> <!-- SetA Intra -->
+                <td>0.277 ± 0.006</td><td>0.472 ± 0.047</td><td>0.348 ± 0.010</td> <!-- SetA Inter -->
                 <!-- SetB -->
-                <td>0.435 ± 0.027</td><td>0.346 ± 0.022</td><td>0.384 ± 0.026</td> <!-- SetB Intra -->
-                <td>0.428 ± 0.020</td><td>0.320 ± 0.021</td><td>0.388 ± 0.021</td> <!-- SetB Inter -->
+                <td>0.435 ± 0.027</td><td>0.346 ± 0.022</td><td>0.384 ± 0.006</td> <!-- SetB Intra -->
+                <td>0.600 ± 0.007</td><td>0.469 ± 0.044</td><td>0.526 ± 0.027</td> <!-- SetB Inter -->
               </tr>
 
               <!-- RNABERT (MLP) model -->
-              <tr><td>RNABERT (MLP)</td>
+              <tr><td><strong>RNABERT (MLP)</strong></td>
                 <!-- bpRNA -->
-                <td>0.551 ± 0.003</td><td>0.551 ± 0.007</td><td>0.551 ± 0.005</td> <!-- bpRNA Intra -->
+                <td>0.551 ± 0.003</td><td>0.551 ± 0.007</td><td>0.551 ± 0.004</td> <!-- bpRNA Intra -->
                 <td>0.517 ± 0.000</td><td>0.567 ± 0.007</td><td>0.541 ± 0.003</td> <!-- bpRNA Inter -->
                 <!-- SetA -->
-                <td>0.614 ± 0.000</td><td>0.814 ± 0.002</td><td>0.711 ± 0.013</td> <!-- SetA Intra -->
-                <td>0.525 ± 0.001</td><td>0.512 ± 0.004</td><td>0.518 ± 0.002</td> <!-- SetA Inter -->
+                <td>0.614 ± 0.000</td><td>0.814 ± 0.002</td><td>0.700 ± 0.001</td> <!-- SetA Intra -->
+                <td>0.488 ± 0.000</td><td><strong>0.803 ± 0.000</strong></td><td>0.607 ± 0.000</td> <!-- SetA Inter -->
                 <!-- SetB -->
                 <td>0.525 ± 0.001</td><td>0.512 ± 0.004</td><td>0.518 ± 0.002</td> <!-- SetB Intra -->
-                <td>0.492 ± 0.002</td><td>0.456 ± 0.020</td><td>0.487 ± 0.015</td> <!-- SetB Inter -->
+                <td>0.649 ± 0.001</td><td>0.440 ± 0.005</td><td>0.524 ± 0.004</td> <!-- SetB Inter -->
               </tr>
 
               <!-- RNA-FM (MLP) model -->
-              <tr><td>RNA-FM (MLP)</td>
+              <tr><td><strong>RNA-FM (MLP)</strong></td>
                 <!-- bpRNA -->
-                <td>0.747 ± 0.001</td><td>0.788 ± 0.007</td><td>0.766 ± 0.005</td> <!-- bpRNA Intra -->
-                <td>0.563 ± 0.003</td><td>0.661 ± 0.008</td><td>0.608 ± 0.004</td> <!-- bpRNA Inter -->
+                <td>0.747 ± 0.001</td><td>0.788 ± 0.007</td><td>0.766 ± 0.004</td> <!-- bpRNA Intra -->
+                <td>0.563 ± 0.003</td><td>0.661 ± 0.008</td><td>0.608 ± 0.002</td> <!-- bpRNA Inter -->
                 <!-- SetA -->
-                <td>0.810 ± 0.002</td><td>0.867 ± 0.004</td><td>0.841 ± 0.004</td> <!-- SetA Intra -->
-                <td>0.867 ± 0.002</td><td>0.871 ± 0.002</td><td>0.869 ± 0.002</td> <!-- SetA Inter -->
+                <td>0.810 ± 0.002</td><td>0.867 ± 0.004</td><td>0.837 ± 0.001</td> <!-- SetA Intra -->
+                <td>0.657 ± 0.009</td><td>0.716 ± 0.009</td><td>0.685 ± 0.001</td> <!-- SetA Inter -->
                 <!-- SetB -->
-                <td>0.867 ± 0.002</td><td>0.871 ± 0.002</td><td>0.869 ± 0.002</td> <!-- SetB Intra -->
-                <td>0.878 ± 0.002</td><td>0.864 ± 0.007</td><td>0.871 ± 0.004</td> <!-- SetB Inter -->
+                <td>0.867 ± 0.002</td><td>0.871 ± 0.002</td><td>0.869 ± 0.000</td> <!-- SetB Intra -->
+                <td>0.699 ± 0.005</td><td>0.533 ± 0.011</td><td>0.605 ± 0.006</td> <!-- SetB Inter -->
               </tr>
 
               <!-- 3UTRBERT (MLP) model -->
-              <tr><td>3UTRBERT (MLP)</td>
+              <tr><td><strong>3UTRBERT (MLP)</strong></td>
                 <!-- bpRNA -->
-                <td>0.600 ± 0.008</td><td>0.702 ± 0.022</td><td>0.652 ± 0.015</td> <!-- bpRNA Intra -->
-                <td>0.529 ± 0.006</td><td>0.686 ± 0.017</td><td>0.606 ± 0.010</td> <!-- bpRNA Inter -->
+                <td>0.600 ± 0.008</td><td>0.702 ± 0.022</td><td>0.647 ± 0.012</td> <!-- bpRNA Intra -->
+                <td>0.529 ± 0.006</td><td>0.686 ± 0.017</td><td>0.597 ± 0.003</td> <!-- bpRNA Inter -->
                 <!-- SetA -->
-                <td>0.683 ± 0.009</td><td>0.822 ± 0.006</td><td>0.752 ± 0.008</td> <!-- SetA Intra -->
-                <td>0.670 ± 0.005</td><td>0.676 ± 0.014</td><td>0.673 ± 0.009</td> <!-- SetA Inter -->
+                <td>0.683 ± 0.009</td><td>0.822 ± 0.006</td><td>0.746 ± 0.004</td> <!-- SetA Intra -->
+                <td>0.500 ± 0.002</td><td>0.743 ± 0.016</td><td>0.598 ± 0.004</td> <!-- SetA Inter -->
                 <!-- SetB -->
-                <td>0.670 ± 0.005</td><td>0.676 ± 0.014</td><td>0.673 ± 0.009</td> <!-- SetB Intra -->
-                <td>0.716 ± 0.003</td><td>0.667 ± 0.010</td><td>0.690 ± 0.004</td> <!-- SetB Inter -->
+                <td>0.670 ± 0.005</td><td>0.676 ± 0.014</td><td>0.673 ± 0.005</td> <!-- SetB Intra -->
+                <td>0.616 ± 0.003</td><td>0.483 ± 0.014</td><td>0.512 ± 0.009</td> <!-- SetB Inter -->
               </tr>
+
+              <!-- SpliceRBERT (MLP) model -->
+              <tr><td><strong>SpliceRBERT (MLP)</strong></td>
+                <!-- bpRNA -->
+                <td>0.613 ± 0.018</td><td>0.696 ± 0.040</td><td>0.651 ± 0.024</td> <!-- bpRNA Intra -->
+                <td>0.533 ± 0.007</td><td>0.652 ± 0.034</td><td>0.586 ± 0.011</td> <!-- bpRNA Inter -->
+                <!-- SetA -->
+                <td>0.708 ± 0.019</td><td>0.822 ± 0.023</td><td>0.760 ± 0.001</td> <!-- SetA Intra -->
+                <td>0.496 ± 0.005</td><td>0.718 ± 0.039</td><td>0.587 ± 0.010</td> <!-- SetA Inter -->
+                <!-- SetB -->
+                <td>0.723 ± 0.010</td><td>0.712 ± 0.018</td><td>0.717 ± 0.005</td> <!-- SetB Intra -->
+                <td>0.615 ± 0.003</td><td>0.495 ± 0.036</td><td>0.548 ± 0.022</td> <!-- SetB Inter -->
+              </tr>
+
+             <!-- UTR-LM (MLP) model -->
+              <tr><td><strong>UTR-LM (MLP)</strong></td>
+                <!-- bpRNA -->
+                <td>0.599 ± 0.014</td><td>0.646 ± 0.015</td><td>0.621 ± 0.007</td> <!-- bpRNA Intra -->
+                <td>0.543 ± 0.004</td><td>0.634 ± 0.018</td><td>0.585 ± 0.005</td> <!-- bpRNA Inter -->
+                <!-- SetA -->
+                <td>0.671 ± 0.007</td><td>0.785 ± 0.010</td><td>0.723 ± 0.005</td> <!-- SetA Intra -->
+                <td>0.505 ± 0.002</td><td>0.729 ± 0.014</td><td>0.597 ± 0.005</td> <!-- SetA Inter -->
+                <!-- SetB -->
+                <td>0.639 ± 0.014</td><td>0.669 ± 0.034</td><td>0.653 ± 0.016</td> <!-- SetB Intra -->
+                <td>0.626 ± 0.007</td><td>0.499 ± 0.030</td><td>0.555 ± 0.017</td> <!-- SetB Inter -->
+              </tr>
+
+             <!-- RiNALMo (MLP) model -->
+              <tr><td><strong>RiNALMo (MLP)</strong></td>
+                <!-- bpRNA -->
+                <td>0.781 ± 0.006</td><td>0.814 ± 0.009</td><td>0.797 ± 0.004</td> <!-- bpRNA Intra -->
+                <td><strong>0.575 ± 0.007</strong></td><td>0.683 ± 0.016</td><td><strong>0.625 ± 0.006</strong></td> <!-- bpRNA Inter -->
+                <!-- SetA -->
+                <td>0.871 ± 0.004</td><td>0.892 ± 0.007</td><td>0.881 ± 0.002</td> <!-- SetA Intra -->
+                <td>0.675 ± 0.008</td><td>0.756 ± 0.010</td><td><strong>0.713 ± 0.003</strong></td> <!-- SetA Inter -->
+                <!-- SetB -->
+                <td>0.887 ± 0.011</td><td><strong>0.901 ± 0.007</strong></td><td>0.894 ± 0.003</td> <!-- SetB Intra -->
+                <td><strong>0.789 ± 0.004</strong></td><td><strong>0.673 ± 0.013</strong></td><td><strong>0.726 ± 0.006</strong></td> <!-- SetB Inter -->
+              </tr>
+
+
+              <!-- RNABERT (CNN) model -->
+              <tr><td><strong>RNABERT (CNN)</strong></td>
+                <!-- bpRNA -->
+                <td>0.587 ± 0.004</td><td>0.610 ± 0.011</td><td>0.598 ± 0.003</td> <!-- bpRNA Intra -->
+                <td>0.542 ± 0.002</td><td>0.603 ± 0.013</td><td>0.571 ± 0.005</td> <!-- bpRNA Inter -->
+                <!-- SetA -->
+                <td>0.652 ± 0.010</td><td>0.746 ± 0.018</td><td>0.696 ± 0.003</td> <!-- SetA Intra -->
+                <td>0.507 ± 0.004</td><td>0.730 ± 0.031</td><td>0.599 ± 0.010</td> <!-- SetA Inter -->
+                <!-- SetB -->
+                <td>0.548 ± 0.005</td><td>0.606 ± 0.023</td><td>0.575 ± 0.008</td> <!-- SetB Intra -->
+                <td>0.588 ± 0.002</td><td>0.537 ± 0.028</td><td>0.561 ± 0.015</td> <!-- SetB Inter -->
+              </tr>
+
+             <!-- RNA-FM (CNN) model -->
+              <tr><td><strong>RNA-FM (CNN)</strong></td>
+                <!-- bpRNA -->
+                <td>0.763 ± 0.009</td><td>0.812 ± 0.012</td><td>0.786 ± 0.001</td> <!-- bpRNA Intra -->
+                <td>0.541 ± 0.007</td><td>0.650 ± 0.015</td><td>0.590 ± 0.005</td> <!-- bpRNA Inter -->
+                <!-- SetA -->
+                <td>0.813 ± 0.006</td><td>0.847 ± 0.009</td><td>0.842 ± 0.001</td> <!-- SetA Intra -->
+                <td>0.649 ± 0.020</td><td>0.727 ± 0.016</td><td>0.685 ± 0.005</td> <!-- SetA Inter -->
+                <!-- SetB -->
+                <td>0.879 ± 0.015</td><td>0.870 ± 0.014</td><td>0.874 ± 0.001</td> <!-- SetB Intra -->
+                <td>0.682 ± 0.012</td><td>0.489 ± 0.017</td><td>0.569 ± 0.007</td> <!-- SetB Inter -->
+              </tr>
+
+              <!-- 3UTRBERT (CNN) model -->
+              <tr><td><strong>3UTRBERT (CNN)</strong></td>
+                <!-- bpRNA -->
+                <td>0.612 ± 0.015</td><td>0.748 ± 0.019</td><td>0.672 ± 0.005</td> <!-- bpRNA Intra -->
+                <td>0.509 ± 0.011</td><td>0.697 ± 0.037</td><td>0.588 ± 0.016</td> <!-- bpRNA Inter -->
+                <!-- SetA -->
+                <td>0.700 ± 0.001</td><td>0.837 ± 0.006</td><td>0.762 ± 0.002</td> <!-- SetA Intra -->
+                <td>0.496 ± 0.005</td><td>0.733 ± 0.013</td><td>0.592 ± 0.008</td> <!-- SetA Inter -->
+                <!-- SetB -->
+                <td>0.704 ± 0.002</td><td>0.704 ± 0.003</td><td>0.704 ± 0.001</td> <!-- SetB Intra -->
+                <td>0.616 ± 0.003</td><td>0.401 ± 0.008</td><td>0.486 ± 0.005</td> <!-- SetB Inter -->
+              </tr>
+
+              <!-- SpliceRBERT (CNN) model -->
+              <tr><td><strong>SpliceRBERT (CNN)</strong></td>
+                <!-- bpRNA -->
+                <td>0.634 ± 0.003</td><td>0.760 ± 0.011</td><td>0.691 ± 0.003</td> <!-- bpRNA Intra -->
+                <td>0.496 ± 0.005</td><td>0.656 ± 0.013</td><td>0.565 ± 0.004</td> <!-- bpRNA Inter -->
+                <!-- SetA -->
+                <td>0.727 ± 0.007</td><td>0.829 ± 0.009</td><td>0.774 ± 0.000</td> <!-- SetA Intra -->
+                <td>0.492 ± 0.003</td><td>0.703 ± 0.013</td><td>0.579 ± 0.006</td> <!-- SetA Inter -->
+                <!-- SetB -->
+                <td>0.730 ± 0.004</td><td>0.744 ± 0.020</td><td>0.737 ± 0.008</td> <!-- SetB Intra -->
+                <td>0.614 ± 0.004</td><td>0.441 ± 0.015</td><td>0.513 ± 0.011</td> <!-- SetB Inter -->
+              </tr>
+
+             <!-- UTR-LM (CNN) model -->
+              <tr><td><strong>UTR-LM (CNN)</strong></td>
+                <!-- bpRNA -->
+                <td>0.618 ± 0.006</td><td>0.728 ± 0.012</td><td>0.668 ± 0.003</td> <!-- bpRNA Intra -->
+                <td>0.524 ± 0.007</td><td>0.688 ± 0.019</td><td>0.595 ± 0.007</td> <!-- bpRNA Inter -->
+                <!-- SetA -->
+                <td>0.689 ± 0.005</td><td>0.807 ± 0.012</td><td>0.743 ± 0.003</td> <!-- SetA Intra -->
+                <td>0.498 ± 0.002</td><td>0.716 ± 0.012</td><td>0.587 ± 0.003</td> <!-- SetA Inter -->
+                <!-- SetB -->
+                <td>0.709 ± 0.008</td><td>0.668 ± 0.005</td><td>0.688 ± 0.006</td> <!-- SetB Intra -->
+                <td>0.620 ± 0.003</td><td>0.400 ± 0.003</td><td>0.486 ± 0.003</td> <!-- SetB Inter -->
+              </tr>
+
+             <!-- RiNALMo (CNN) model -->
+              <tr><td><strong>RiNALMo (CNN)</strong></td>
+                <!-- bpRNA -->
+                <td>0.785 ± 0.006</td><td><strong>0.823 ± 0.007</strong></td><td>0.803 ± 0.000</td> <!-- bpRNA Intra -->
+                <td>0.572 ± 0.014</td><td>0.643 ± 0.025</td><td>0.605 ± 0.006</td> <!-- bpRNA Inter -->
+                <!-- SetA -->
+                <td><strong>0.874 ± 0.002</strong></td><td>0.888 ± 0.007</td><td>0.881 ± 0.002</td> <!-- SetA Intra -->
+                <td><strong>0.678 ± 0.003</strong></td><td>0.783 ± 0.020</td><td>0.706 ± 0.007</td> <!-- SetA Inter -->
+                <!-- SetB -->
+                <td><strong>0.908 ± 0.005</strong></td><td>0.897 ± 0.002</td><td><strong>0.903 ± 0.002</strong></td> <!-- SetB Intra -->
+                <td>0.779 ± 0.010</td><td>0.650 ± 0.018</td><td>0.708 ± 0.008</td> <!-- SetB Inter -->
+              </tr>
+
+             <!-- RNABERT (ResNet) model -->
+              <tr><td><strong>RNABERT (ResNet)</strong></td>
+                <!-- bpRNA -->
+                <td>0.593 ± 0.026</td><td>0.818 ± 0.058</td><td>0.685 ± 0.003</td> <!-- bpRNA Intra -->
+                <td>0.479 ± 0.011</td><td>0.730 ± 0.077</td><td>0.576 ± 0.015</td> <!-- bpRNA Inter -->
+                <!-- SetA -->
+                <td>0.690 ± 0.014</td><td>0.805 ± 0.032</td><td>0.743 ± 0.006</td> <!-- SetA Intra -->
+                <td>0.484 ± 0.004</td><td>0.723 ± 0.039</td><td>0.579 ± 0.009</td> <!-- SetA Inter -->
+                <!-- SetB -->
+                <td>0.705 ± 0.005</td><td>0.639 ± 0.009</td><td>0.670 ± 0.004</td> <!-- SetB Intra -->
+                <td>0.610 ± 0.007</td><td>0.393 ± 0.021</td><td>0.478 ± 0.013</td> <!-- SetB Inter -->
+              </tr>
+
+             <!-- RNA-FM (ResNet) model -->
+              <tr><td><strong>RNA-FM (ResNet)</strong></td>
+                <!-- bpRNA -->
+                <td>0.734 ± 0.008</td><td>0.820 ± 0.012</td><td>0.775 ± 0.001</td> <!-- bpRNA Intra -->
+                <td>0.540 ± 0.009</td><td>0.693 ± 0.016</td><td>0.607 ± 0.001</td> <!-- bpRNA Inter -->
+                <!-- SetA -->
+                <td>0.783 ± 0.006</td><td>0.861 ± 0.006</td><td>0.820 ± 0.001</td> <!-- SetA Intra -->
+                <td>0.585 ± 0.015</td><td>0.766 ± 0.005</td><td>0.663 ± 0.008</td> <!-- SetA Inter -->
+                <!-- SetB -->
+                <td>0.851 ± 0.017</td><td>0.870 ± 0.004</td><td>0.860 ± 0.006</td> <!-- SetB Intra -->
+                <td>0.665 ± 0.015</td><td>0.533 ± 0.045</td><td>0.591 ± 0.023</td> <!-- SetB Inter -->
+              </tr>
+
+              <!-- 3UTRBERT (ResNet) model -->
+              <tr><td><strong>3UTRBERT (ResNet)</strong></td>
+                <!-- bpRNA -->
+                <td>0.597 ± 0.010</td><td>0.804 ± 0.036</td><td>0.685 ± 0.007</td> <!-- bpRNA Intra -->
+                <td>0.485 ± 0.004</td><td>0.713 ± 0.051</td><td>0.576 ± 0.015</td> <!-- bpRNA Inter -->
+                <!-- SetA -->
+                <td>0.699 ± 0.009</td><td>0.801 ± 0.018</td><td>0.746 ± 0.003</td> <!-- SetA Intra -->
+                <td>0.489 ± 0.006</td><td>0.692 ± 0.029</td><td>0.573 ± 0.008</td> <!-- SetA Inter -->
+                <!-- SetB -->
+                <td>0.706 ± 0.022</td><td>0.686 ± 0.034</td><td>0.695 ± 0.009</td> <!-- SetB Intra -->
+                <td>0.609 ± 0.004</td><td>0.422 ± 0.049</td><td>0.498 ± 0.032</td> <!-- SetB Inter -->
+              </tr>
+
+              <!-- SpliceRBERT (ResNet) model -->
+              <tr><td><strong>SpliceRBERT (ResNet)</strong></td>
+                <!-- bpRNA -->
+                <td>0.627 ± 0.012</td><td>0.781 ± 0.033</td><td>0.695 ± 0.006</td> <!-- bpRNA Intra -->
+                <td>0.491 ± 0.008</td><td>0.692 ± 0.031</td><td>0.574 ± 0.005</td> <!-- bpRNA Inter -->
+                <!-- SetA -->
+                <td>0.718 ± 0.020</td><td>0.835 ± 0.035</td><td>0.772 ± 0.004</td> <!-- SetA Intra -->
+                <td>0.486 ± 0.006</td><td>0.719 ± 0.056</td><td>0.579 ± 0.014</td> <!-- SetA Inter -->
+                <!-- SetB -->
+                <td>0.719 ± 0.017</td><td>0.706 ± 0.015</td><td>0.712 ± 0.003</td> <!-- SetB Intra -->
+                <td>0.599 ± 0.013</td><td>0.528 ± 0.006</td><td>0.561 ± 0.003</td> <!-- SetB Inter -->
+              </tr>
+
+             <!-- UTR-LM (ResNet) model -->
+              <tr><td><strong>UTR-LM (ResNet)</strong></td>
+                <!-- bpRNA -->
+                <td>0.625 ± 0.012</td><td>0.488 ± 0.028</td><td>0.697 ± 0.003</td> <!-- bpRNA Intra -->
+                <td>0.491 ± 0.006</td><td>0.676 ± 0.042</td><td>0.568 ± 0.012</td> <!-- bpRNA Inter -->
+                <!-- SetA -->
+                <td>0.720 ± 0.012</td><td>0.797 ± 0.033</td><td>0.756 ± 0.008</td> <!-- SetA Intra -->
+                <td>0.491 ± 0.005</td><td>0.678 ± 0.047</td><td>0.569 ± 0.013</td> <!-- SetA Inter -->
+                <!-- SetB -->
+                <td>0.738 ± 0.028</td><td>0.698 ± 0.043</td><td>0.716 ± 0.012</td> <!-- SetB Intra -->
+                <td>0.613 ± 0.008</td><td>0.387 ± 0.058</td><td>0.472 ± 0.042</td> <!-- SetB Inter -->
+              </tr>
+
+             <!-- RiNALMo (ResNet) model -->
+              <tr><td><strong>RiNALMo (ResNet)</strong></td>
+                <!-- bpRNA -->
+                <td><strong>0.788 ± 0.014</strong></td><td><strong>0.823 ± 0.010</strong></td><td><strong>0.805 ± 0.003</strong></td> <!-- bpRNA Intra -->
+                <td>0.573 ± 0.007</td><td>0.660 ± 0.036</td><td>0.613 ± 0.014</td> <!-- bpRNA Inter -->
+                <!-- SetA -->
+                <td>0.861 ± 0.005</td><td><strong>0.903 ± 0.009</strong></td><td><strong>0.882 ± 0.002</strong></td> <!-- SetA Intra -->
+                <td>0.664 ± 0.022</td><td>0.757 ± 0.044</td><td>0.707 ± 0.007</td> <!-- SetA Inter -->
+                <!-- SetB -->
+                <td>0.902 ± 0.015</td><td>0.891 ± 0.016</td><td>0.897 ± 0.001</td> <!-- SetB Intra -->
+                <td>0.773 ± 0.022</td><td>0.596 ± 0.035</td><td>0.672 ± 0.015</td> <!-- SetB Inter -->
+              </tr>
+
+
             </tbody>
 
 
