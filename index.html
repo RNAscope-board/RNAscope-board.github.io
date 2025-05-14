@@ -133,8 +133,6 @@ leading to insufficient and biased assessments that hinder their practical appli
 
 
 
-<!DOCTYPE html>
-<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -160,12 +158,6 @@ leading to insufficient and biased assessments that hinder their practical appli
     /* Make sure the table is readable with long content */
     .table th {
       cursor: pointer;
-    }
-    .highlight-best {
-      background-color: #56d46b; /* Dark green for best */
-    }
-    .highlight-second-best {
-      background-color: #92d050; /* Light green for second best */
     }
 
     #performance-table th {
@@ -208,12 +200,39 @@ leading to insufficient and biased assessments that hinder their practical appli
       color:inherit !important;
     }
 
-    .ssp-desc code{
-    background:#f5f5f5;   /* 浅灰底 */
-    color:#000 !important;/* 黑字，!important 盖掉 Bulma 的红色 */
-    font-family:inherit;  /* 跟正文同字体；可删保持等宽 */
-    padding:0 0.2em;      /* 轻微内边距，视觉舒服 */
-    border-radius:3px;    /* 圆角，可不要 */
+
+    #performance-table1 th {
+    font-family: 'Arial', monospace;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #dff1ff;  /* background color */
+    }
+
+    #performance-table1 td {
+    font-family: 'Georgia', serif;
+    font-size: 12px;
+    }
+
+    #performance-table1 tbody tr:nth-child(odd) td {
+      background:#f9f9f9 !important;
+    }
+
+    #performance-table1 tbody tr:nth-child(even) td {
+      background:#ffffff !important;
+    }
+
+    #performance-table1 tbody tr:hover {
+      background:#004db6 !important;
+    }
+
+    #performance-table1 tbody tr:hover td,
+    #performance-table1 tbody tr:hover th {
+      color:#004db6 !important;
+      font-weight:bold;
+    }
+
+    #performance-table1 tbody tr:hover a {
+      color:inherit !important;
     }
 
   </style>
@@ -248,9 +267,7 @@ leading to insufficient and biased assessments that hinder their practical appli
               <em>inter-family</em> split (training and test sequences drawn from different RNA families).
             </p>
          </div>
-
-
-        <div class="table-container">
+         <div class="table-container">
           <table class="table is-striped is-bordered is-hoverable is-fullwidth tablesorter" id="performance-table">
             <thead>
               <tr>
@@ -532,14 +549,62 @@ leading to insufficient and biased assessments that hinder their practical appli
                 <td>0.902 ± 0.015</td><td>0.891 ± 0.016</td><td>0.897 ± 0.001</td> <!-- SetB Intra -->
                 <td>0.773 ± 0.022</td><td>0.596 ± 0.035</td><td>0.672 ± 0.015</td> <!-- SetB Inter -->
               </tr>
-
-
             </tbody>
 
 
 
           </table>
         </div>
+
+        <!-- ======================================================= -->
+        <!-- 2. Chemical Reactivity Prediction                    -->
+        <!-- ======================================================= -->
+        <h3 class="subtitle is-4">(2) Chemical Reactivity Prediction</h3>
+          <div class="content has-text-justified">
+            <p class="crp-desc" style="text-align:left;">
+              <strong>Chemical Reactivity Prediction&nbsp;(CRP)</strong> is framed as a
+              regression task in which the model estimates the nucleotide-wise chemical
+              reactivity&nbsp;\(y_i \in [0,1]\) for each position
+              \(x_i\) of an RNA molecule. Reactivity values correlate with secondary
+              structure: unpaired or flexible regions generally exhibit higher chemical
+              reactivity, whereas base-paired segments tend to be less reactive.
+              Accordingly, CRP captures both static base-pairing information and dynamic
+              conformational fluctuations&nbsp; The benchmark provides two Test sets—
+              <code style="background:#f5f5f5;color:#000;">TestS</code> (short RNAs) and
+              <code style="background:#f5f5f5;color:#000;">TestL</code> (long RNAs)—whose
+              ground-truth reactivities were obtained from high-throughput probing
+              experiments. Models are assessed by the mean absolute error
+              (<em>MAE</em>&nbsp;↓) on each test set.
+            </p>
+          </div>
+          <!-- ────────────────────────────────── CRP results table ────────────────────────────────── -->
+
+         <div class="table-container">
+          <table class="table is-striped is-bordered is-hoverable is-fullwidth tablesorter" id="performance-table1">
+            <thead>
+              <tr>
+                <th rowspan="2">Model (Module)</th>
+                <th colspan="1" class="has-text-centered" class="is-size-12">bpRNA</th>
+                <th colspan="1" class="has-text-centered" class="is-size-12">Set A</th>
+              </tr>
+              <tr>
+                <!-- bpRNA -->
+                 <th>Precision<sub>Intra-Family</sub></th>
+                <th>Precision<sub>Intra-Family</sub></th>
+                <th>Precision<sub>Inter-Family</sub></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr><td><strong>One-hot</strong></td>
+                <!-- bpRNA -->
+                <td>0.465 ± 0.008</td>
+                <td>0.399 ± 0.002</td>
+              </tr>
+             </tbody>
+          </table>
+        </div>
+
 
       </div>
     </div>
@@ -552,23 +617,11 @@ leading to insufficient and biased assessments that hinder their practical appli
   $(document).ready(function() {
     // Initialize the tablesorter plugin
     $("#performance-table").tablesorter();
+     $("#performance-table1").tablesorter();
   });
 </script>
 
 </body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
